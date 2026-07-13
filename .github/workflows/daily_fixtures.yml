@@ -1,0 +1,134 @@
+.github/workflows/daily_fixtures.yml
+Daily Football Fixtures -> Telegram Bot
+Designed to run once a day via GitHub Actions (free, no server needed).
+
+SETUP (one-time):
+------------------
+1. Create your Telegram bot:
+   - Open Telegram, message @BotFather
+   - Send /newbot, follow prompts, copy the API token it gives you
+
+2. Get your chat ID:
+   - Message your new bot anything (e.g. "hi")
+   - Visit: https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates
+   - Find "chat":{"id": 123456789} in the response - that's your chat ID
+
+3. Get an API-Football key (free): https://www.api-football.com
+
+4. Store all 3 as GitHub Secrets in your repo (Settings > Secrets > Actions):
+   - API_FOOTBALL_KEY
+   - TELEGRAM_BOT_TOKEN
+   - TELEGRAM_CHAT_ID
+
+5. Add the workflow file (.github/workflows/daily_fixtures.yml) - provided separately.
+
+That's it. GitHub Actions will run this script daily and message you.
+"""
+
+import os
+import requests
+from datetime import date
+
+# --- CONFIG (all pulled from environment / GitHub Secrets) ---
+API_KEY = os.environ["API_FOOTBALL_KEY"]
+BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
+CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
+
+FIXTURES_URL = "https://v3.football.api-sports.io/fixtures"
+TELEGRAM_URL = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+
+TARGET_DATE = date.today().isoformat()
+
+# Leave empty for ALL leagues worldwide, or set specific IDs, e.g. [39, 140, 135, 78, 61]
+LEAGUE_IDS = []
+
+# Telegram messages max out at 4096 characters - we chunk if needed
+TELEGRAM_LIMIT = 4000
+
+
+def fetch_fixtures(target_date: str) -> list:
+    headers = {"x-apisports-key": API_KEY}
+    params = {"date": target_date}
+    resp = requests.get(FIXTURES_URL, headers=headers, params=params, timeout=15)
+    resp.raise_for_status()
+    data = resp.json()
+    if data.get("errors"):
+        raise RuntimeError(f"API-Football error: {data['errors']}")
+    return data.get("response", [])
+
+
+def format_as_text(fixtures: list, league_filter: list) -> str:
+    lines = []
+    current_league = None
+
+    fixtures_sorted = sorted(
+        fixtures,
+        key=lambda f: (f["league"]["name"], f["fixture"]["date"])
+    )
+
+    for f in fixtures_sorted:
+        league_id = f["league"]["id"]
+        if league_filter and league_id not in league_filter:
+            continue
+
+        league_name = f"{f['league']['country']} - {f['league']['name']}"
+        home = f["teams"]["home"]["name"]
+        away = f["teams"]["away"]["name"]
+        kickoff = f["fixture"]["date"][11:16]  # HH:MM UTC
+
+        if league_name != current_league:
+            lines.append(f"\n<b>{league_name}</b>")
+            current_league = league_name
+
+        lines.append(f"{kickoff} UTC | {home} vs {away}")
+
+    if not lines:
+        return "No fixtures found today."
+
+    return "\n".join(lines).strip()
+
+
+def chunk_message(text: str, limit: int = TELEGRAM_LIMIT) -> list:
+    """Split text into Telegram-safe chunks without breaking mid-line."""
+    if len(text) <= limit:
+        return [text]
+
+    chunks = []
+    current = ""
+    for line in text.split("\n"):
+        if len(current) + len(line) + 1 > limit:
+            chunks.append(current)
+            current = line
+        else:
+            current += ("\n" if current else "") + line
+    if current:
+        chunks.append(current)
+    return chunks
+
+
+def send_telegram_message(text: str):
+    payload = {
+        "chat_id": CHAT_ID,
+        "text": text,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": True,
+    }
+    resp = requests.post(TELEGRAM_URL, data=payload, timeout=15)
+    resp.raise_for_status()
+
+
+def main():
+    fixtures = fetch_fixtures(TARGET_DATE)
+    body = format_as_text(fixtures, LEAGUE_IDS)
+
+    header = f"⚽ <b>Fixtures — {TARGET_DATE}</b>"
+    full_message = f"{header}\n{body}"
+
+    for chunk in chunk_message(full_message):
+        send_telegram_message(chunk)
+
+    print(f"Sent fixtures for {TARGET_DATE} ({len(fixtures)} matches found).")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,40 @@
+name: Build League Whitelist
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build-whitelist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build league whitelist
+        run: python -m scripts.build_league_whitelist
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          API_FOOTBALL_HOST: ${{ secrets.API_FOOTBALL_HOST }}
+
+      - name: Commit and push whitelist
+        run: |
+          git config user.name "football-bot-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/league_whitelist.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: build/update league whitelist"
+            git push
+          fi

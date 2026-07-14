@@ -1,0 +1,164 @@
+"""
+One-off / occasional maintenance script.
+
+Fetches ALL leagues from API-Football once, then selects:
+  - The top 2 domestic divisions for every country in config.TARGET_COUNTRIES
+  - All international / friendly competitions matching keyword rules
+
+...and writes the result to data/league_whitelist.json, which is what the
+daily fetch job reads at runtime (so the daily job never has to spend
+requests re-discovering leagues).
+
+Run this manually whenever you edit config.TARGET_COUNTRIES, or roughly
+once a season to catch newly promoted/renamed leagues. It costs ~1-2 API
+requests total (the /leagues endpoint returns everything in one call), so
+it's safe to rerun occasionally without worrying about the daily budget.
+
+Usage:
+    python -m scripts.build_league_whitelist
+"""
+import json
+import os
+import sys
+
+# Allow running as `python -m scripts.build_league_whitelist` from repo root.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from src import config
+from src.api_client import ApiFootballClient, APIFootballError
+
+
+# API-Football /leagues response items look roughly like:
+# {
+#   "league": {"id": 39, "name": "Premier League", "type": "League", ...},
+#   "country": {"name": "England", ...},
+#   "seasons": [{"year": 2026, "current": true, ...}, ...]
+# }
+#
+# "Division rank" isn't given explicitly, so we infer top-2 by common naming
+# patterns per country, falling back to the first two leagues of type
+# "League" returned for that country (API-Football generally lists the top
+# flight first).
+
+# Known second-division names, used to detect the "2nd tier" reliably where
+# naming doesn't follow "Segunda"/"2. Bundesliga" style patterns.
+SECOND_DIVISION_HINTS = [
+    "2", "ii", "b", "segunda", "serie b", "ligue 2", "2. bundesliga",
+    "championship", "eerste divisie", "liga portugal 2", "challenger pro league",
+    "1. lig", "superettan", "obos-ligaen", "1. division", "i liga",
+    "fnl", "persha liga", "prva liga", "second division", "b nationale",
+]
+
+
+def is_second_division(league_name: str) -> bool:
+    name = league_name.lower()
+    return any(hint in name for hint in SECOND_DIVISION_HINTS)
+
+
+def matches_always_include(league_name: str) -> bool:
+    name = league_name.lower()
+    return any(kw in name for kw in config.ALWAYS_INCLUDE_LEAGUE_NAME_KEYWORDS)
+
+
+def build_whitelist(client: ApiFootballClient) -> dict:
+    print("Fetching full leagues catalog from API-Football...")
+    all_leagues = client.get("/leagues")
+    print(f"Retrieved {len(all_leagues)} league/country entries. {client.budget_summary()}")
+
+    by_country = {}
+    international_entries = []
+
+    for entry in all_leagues:
+        league = entry.get("league", {})
+        country = entry.get("country", {})
+        league_type = league.get("type", "")
+        league_name = league.get("name", "")
+        country_name = country.get("name", "") or ""
+
+        # Only keep leagues that have a "current" season, to avoid dead/old
+        # competitions cluttering the whitelist.
+        seasons = entry.get("seasons", [])
+        current_season = next((s for s in seasons if s.get("current")), None)
+        if not current_season:
+            continue
+
+        if matches_always_include(league_name) or country_name in ("World", ""):
+            international_entries.append({
+                "id": league.get("id"),
+                "name": league_name,
+                "country": country_name,
+                "season": current_season.get("year"),
+                "tier": "international",
+            })
+            continue
+
+        if league_type != "League":
+            # Skip cups for domestic whitelist — we only want the top 2
+            # divisions (league competitions), not cup competitions.
+            continue
+
+        if country_name not in config.TARGET_COUNTRIES:
+            continue
+
+        by_country.setdefault(country_name, []).append({
+            "id": league.get("id"),
+            "name": league_name,
+            "country": country_name,
+            "season": current_season.get("year"),
+        })
+
+    domestic_entries = []
+    for country_name, leagues in by_country.items():
+        # Separate into "top flight" vs "second division" using hints, then
+        # take at most one of each. If hints don't identify a 2nd division,
+        # fall back to just the first league found (top flight only) rather
+        # than guessing wrong.
+        top_flight = [l for l in leagues if not is_second_division(l["name"])]
+        second_div = [l for l in leagues if is_second_division(l["name"])]
+
+        selected = []
+        if top_flight:
+            selected.append({**top_flight[0], "tier": "1"})
+        if second_div:
+            selected.append({**second_div[0], "tier": "2"})
+
+        domestic_entries.extend(selected)
+
+    whitelist = {
+        "generated_note": (
+            "Auto-generated by scripts/build_league_whitelist.py. "
+            "Re-run that script after editing config.TARGET_COUNTRIES."
+        ),
+        "domestic_leagues": sorted(domestic_entries, key=lambda x: (x["country"], x["tier"])),
+        "international_leagues": sorted(international_entries, key=lambda x: x["name"]),
+    }
+    return whitelist
+
+
+def main():
+    client = ApiFootballClient(run_budget=5)
+    try:
+        whitelist = build_whitelist(client)
+    except APIFootballError as exc:
+        print(f"ERROR: {exc}")
+        sys.exit(1)
+
+    os.makedirs(config.DATA_DIR, exist_ok=True)
+    with open(config.LEAGUE_WHITELIST_FILE, "w") as f:
+        json.dump(whitelist, f, indent=2)
+
+    n_domestic = len(whitelist["domestic_leagues"])
+    n_intl = len(whitelist["international_leagues"])
+    print(f"\nWrote {config.LEAGUE_WHITELIST_FILE}")
+    print(f"  Domestic leagues (top-2-division): {n_domestic}")
+    print(f"  International/friendly competitions: {n_intl}")
+    print(f"  {client.budget_summary()}")
+    print(
+        "\nReview data/league_whitelist.json before first use — country "
+        "name variants and 2nd-division naming can be inconsistent across "
+        "leagues, so spot-check a few countries you care about most."
+    )
+
+
+if __name__ == "__main__":
+    main()

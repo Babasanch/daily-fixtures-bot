@@ -1,0 +1,58 @@
+name: Fetch Morning Session
+
+# Runs at 06:30 UTC = 07:30 WAT, ahead of the 07:00 WAT morning session
+# window, giving the API-Football data a head start before users query it.
+on:
+  schedule:
+    - cron: "30 5 * * *"   # 05:30 UTC = 06:30 WAT
+  workflow_dispatch: {}     # allows manual trigger from the Actions tab
+
+permissions:
+  contents: write   # needed to commit the updated data/*.json back to main
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Ensure league whitelist exists
+        run: |
+          if [ ! -f data/league_whitelist.json ]; then
+            echo "No league whitelist found — building it now."
+            python -m scripts.build_league_whitelist
+          else
+            echo "League whitelist already present, skipping rebuild."
+          fi
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          API_FOOTBALL_HOST: ${{ secrets.API_FOOTBALL_HOST }}
+
+      - name: Run morning fetch
+        run: python -m src.fetch --session morning
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          API_FOOTBALL_HOST: ${{ secrets.API_FOOTBALL_HOST }}
+
+      - name: Commit and push updated data
+        run: |
+          git config user.name "football-bot-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/morning.json data/team_stats_cache.json data/standings_cache.json data/league_whitelist.json
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "chore: update morning session data [skip ci]"
+            git push
+          fi

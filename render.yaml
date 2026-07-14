@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: football-prediction-bot
+    runtime: python
+    plan: free
+    autoDeploy: true   # redeploys automatically whenever GitHub Actions
+                        # pushes fresh data/*.json to the main branch
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 1 --timeout 30 src.bot:app
+    healthCheckPath: /health
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false     # set manually in Render dashboard (secret)
+      - key: TELEGRAM_WEBHOOK_SECRET
+        sync: false     # set manually in Render dashboard (secret)
+      - key: API_FOOTBALL_KEY
+        sync: false     # not actually called from Render, but harmless to set
+      - key: OPENAI_API_KEY
+        sync: false     # Phase 2 — leave blank until you're ready to enable it
+      - key: OPENAI_MODEL
+        value: gpt-5-mini

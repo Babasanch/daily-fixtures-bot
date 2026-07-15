@@ -69,7 +69,11 @@ def load_league_whitelist() -> Optional[Dict[str, Any]]:
 TEAM_STATS_CACHE_FILE = os.path.join(config.DATA_DIR, "team_stats_cache.json")
 STANDINGS_CACHE_FILE = os.path.join(config.DATA_DIR, "standings_cache.json")
 
-TEAM_STATS_TTL_DAYS = 3
+# Shorter TTL than before -- recent-form stats are now derived from a team's
+# actual last N match results, so they go stale as soon as that team plays
+# again. 2 days balances freshness against budget (a team rarely plays more
+# than once every 2-3 days anyway).
+TEAM_STATS_TTL_DAYS = 2
 STANDINGS_TTL_DAYS = 1
 
 
@@ -93,16 +97,21 @@ def save_team_stats_cache(cache: Dict[str, Any]) -> None:
     _write_json(TEAM_STATS_CACHE_FILE, cache)
 
 
-def get_cached_team_stats(cache: Dict[str, Any], team_id: int, league_id: int, season: int) -> Optional[Dict[str, Any]]:
-    key = f"{team_id}:{league_id}:{season}"
+def get_cached_team_stats(cache: Dict[str, Any], team_id: int) -> Optional[Dict[str, Any]]:
+    """
+    Keyed by team_id only -- stats are derived from that team's recent match
+    results regardless of which fixture/league/season triggered the fetch,
+    so the same cached entry is valid for any fixture involving this team.
+    """
+    key = str(team_id)
     entry = cache.get(key)
     if entry and _cache_key_fresh(entry, TEAM_STATS_TTL_DAYS):
         return entry["stats"]
     return None
 
 
-def set_cached_team_stats(cache: Dict[str, Any], team_id: int, league_id: int, season: int, stats: Dict[str, Any]) -> None:
-    key = f"{team_id}:{league_id}:{season}"
+def set_cached_team_stats(cache: Dict[str, Any], team_id: int, stats: Dict[str, Any]) -> None:
+    key = str(team_id)
     cache[key] = {"fetched_at": datetime.now(config.WAT).isoformat(), "stats": stats}
 
 

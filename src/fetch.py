@@ -108,54 +108,78 @@ def _filter_and_shape_fixtures(
     return shaped
 
 
-def _parse_team_statistics(raw: Dict[str, Any]) -> Dict[str, Any]:
-    """Maps API-Football's /teams/statistics response into our TeamStatsBlock shape."""
-    if not raw:
+def _derive_team_stats_from_recent_fixtures(raw_fixtures: List[Dict[str, Any]], team_id: int) -> Dict[str, Any]:
+    """
+    Builds a TeamStatsBlock by computing directly from a team's recent match
+    results (via /fixtures?team=X&last=N), rather than the /teams/statistics
+    endpoint.
+
+    NOTE: this exists because API-Football's free tier restricts
+    /teams/statistics and /standings to older seasons (2022-2024 at time of
+    writing) and rejects the current season with a "Free plans do not have
+    access to this season" error. /fixtures itself is NOT season-restricted
+    the same way (we already rely on it for today's fixture list), so
+    deriving form/goals stats from raw recent results sidesteps the
+    restriction entirely and arguably gives more current data anyway.
+    """
+    matches = []
+    for item in raw_fixtures:
+        status = item.get("fixture", {}).get("status", {}).get("short")
+        if status != "FT":  # only count completed matches
+            continue
+        teams = item.get("teams", {})
+        goals = item.get("goals", {})
+        home = teams.get("home", {})
+        away = teams.get("away", {})
+
+        if home.get("id") == team_id:
+            gf, ga, is_home = goals.get("home"), goals.get("away"), True
+        elif away.get("id") == team_id:
+            gf, ga, is_home = goals.get("away"), goals.get("home"), False
+        else:
+            continue
+        if gf is None or ga is None:
+            continue
+
+        matches.append({
+            "gf": gf, "ga": ga, "is_home": is_home,
+            "date": item.get("fixture", {}).get("date", ""),
+        })
+
+    if not matches:
         return {}
-    fixtures_block = raw.get("fixtures", {})
-    goals_block = raw.get("goals", {})
 
-    played = fixtures_block.get("played", {}).get("total", 0)
-    form = raw.get("form", "") or ""
+    matches.sort(key=lambda m: m["date"])  # oldest first, so form string ends with most recent
+    played = len(matches)
 
-    gf = goals_block.get("for", {})
-    ga = goals_block.get("against", {})
-    gf_avg = gf.get("average", {})
-    ga_avg = ga.get("average", {})
+    def _result(m):
+        if m["gf"] > m["ga"]:
+            return "W"
+        if m["gf"] < m["ga"]:
+            return "L"
+        return "D"
 
-    def _f(v):
-        try:
-            return float(v)
-        except (TypeError, ValueError):
-            return None
+    form = "".join(_result(m) for m in matches)
 
-    over_under_for = gf.get("under_over", {}) or {}
+    def _avg(items):
+        return round(sum(items) / len(items), 2) if items else None
 
-    def _over_rate(line_key):
-        block = over_under_for.get(line_key)
-        if not block:
-            return None
-        total_over = block.get("over")
-        if total_over is None or not played:
-            return None
-        try:
-            return round(int(total_over) / played, 3)
-        except (TypeError, ValueError, ZeroDivisionError):
-            return None
+    home_matches = [m for m in matches if m["is_home"]]
+    away_matches = [m for m in matches if not m["is_home"]]
 
     return {
         "played": played,
         "form": form,
-        "goals_for_avg": _f(gf_avg.get("total")),
-        "goals_against_avg": _f(ga_avg.get("total")),
-        "goals_for_avg_home": _f(gf_avg.get("home")),
-        "goals_for_avg_away": _f(gf_avg.get("away")),
-        "goals_against_avg_home": _f(ga_avg.get("home")),
-        "goals_against_avg_away": _f(ga_avg.get("away")),
-        "clean_sheets": raw.get("clean_sheet", {}).get("total", 0),
-        "failed_to_score": raw.get("failed_to_score", {}).get("total", 0),
-        "over_1_5_rate": _over_rate("1.5"),
-        "over_2_5_rate": _over_rate("2.5"),
+        "goals_for_avg": _avg([m["gf"] for m in matches]),
+        "goals_against_avg": _avg([m["ga"] for m in matches]),
+        "goals_for_avg_home": _avg([m["gf"] for m in home_matches]),
+        "goals_for_avg_away": _avg([m["gf"] for m in away_matches]),
+        "goals_against_avg_home": _avg([m["ga"] for m in home_matches]),
+        "goals_against_avg_away": _avg([m["ga"] for m in away_matches]),
+        "clean_sheets": sum(1 for m in matches if m["ga"] == 0),
+        "failed_to_score": sum(1 for m in matches if m["gf"] == 0),
+        "over_1_5_rate": round(sum(1 for m in matches if (m["gf"] + m["ga"]) >= 2) / played, 3),
+        "over_2_5_rate": round(sum(1 for m in matches if (m["gf"] + m["ga"]) >= 3) / played, 3),
     }
 
 
@@ -245,25 +269,46 @@ def enrich_fixtures(
             league_id = fixture["league_id"]
             season = fixture["season"]
 
-            # --- Team statistics (cached) ---
+            # --- Team statistics (derived from recent fixtures, cached by team) ---
             for side, team_id in (("home", home_id), ("away", away_id)):
-                cached = storage.get_cached_team_stats(team_stats_cache, team_id, league_id, season)
+                cached = storage.get_cached_team_stats(team_stats_cache, team_id)
                 if cached is not None:
                     fixture["stats"][side] = cached
                     continue
-                raw = client.get("/teams/statistics", params={
-                    "team": team_id, "league": league_id, "season": season,
-                })
-                parsed = _parse_team_statistics(raw)
+                try:
+                    raw_recent = client.get("/fixtures", params={"team": team_id, "last": 10})
+                    parsed = _derive_team_stats_from_recent_fixtures(raw_recent, team_id)
+                except BudgetExceededError:
+                    raise
+                except APIFootballError as exc:
+                    print(f"WARNING: team stats unavailable for team {team_id}: {exc}")
+                    parsed = {}
                 fixture["stats"][side] = parsed
-                storage.set_cached_team_stats(team_stats_cache, team_id, league_id, season, parsed)
+                storage.set_cached_team_stats(team_stats_cache, team_id, parsed)
 
             # --- Standings (cached, per league) ---
+            # NOTE: on API-Football's free tier, /standings (like
+            # /teams/statistics) can reject the current season with a
+            # "Free plans do not have access to this season" error. When
+            # that happens we don't crash the run -- league position simply
+            # stays unavailable for this fixture, which rules_engine.py
+            # already treats as a neutral (zero-weight) factor rather than
+            # guessing.
             cached_standings = storage.get_cached_standings(standings_cache, league_id, season)
             if cached_standings is None:
-                raw_standings = client.get("/standings", params={"league": league_id, "season": season})
-                cached_standings = _parse_standings(raw_standings)
-                storage.set_cached_standings(standings_cache, league_id, season, cached_standings)
+                try:
+                    raw_standings = client.get("/standings", params={"league": league_id, "season": season})
+                    cached_standings = _parse_standings(raw_standings)
+                    storage.set_cached_standings(standings_cache, league_id, season, cached_standings)
+                except BudgetExceededError:
+                    raise
+                except APIFootballError as exc:
+                    print(f"WARNING: standings unavailable for league {league_id}/{season}: {exc}")
+                    cached_standings = {}
+                    # Cache the empty result too (short-lived via normal TTL)
+                    # so we don't re-attempt and waste budget on every fixture
+                    # in this same league within the same run.
+                    storage.set_cached_standings(standings_cache, league_id, season, cached_standings)
             fixture["standings"]["home"] = cached_standings.get(home_id, {})
             fixture["standings"]["away"] = cached_standings.get(away_id, {})
 

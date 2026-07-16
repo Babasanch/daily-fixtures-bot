@@ -1,22 +1,22 @@
 {
-  "target_date": "2026-07-15",
+  "target_date": "2026-07-16",
   "fixtures": [
     {
-      "fixture_id": 1519405,
+      "fixture_id": 1519401,
       "league_id": 242,
       "league_name": "Liga Pro",
       "country": "Ecuador",
       "season": 2026,
-      "kickoff_utc": "2026-07-15T00:00:00+00:00",
-      "kickoff_wat": "2026-07-15T01:00:00+01:00",
+      "kickoff_utc": "2026-07-16T00:30:00+00:00",
+      "kickoff_wat": "2026-07-16T01:30:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 1980,
-        "name": "Manta FC"
+        "id": 1152,
+        "name": "Barcelona SC"
       },
       "away_team": {
-        "id": 1149,
-        "name": "Delfin SC"
+        "id": 1159,
+        "name": "Guayaquil City FC"
       },
       "stats": {
         "home": {},
@@ -92,21 +92,21 @@
       }
     },
     {
-      "fixture_id": 1548852,
+      "fixture_id": 1548853,
       "league_id": 667,
       "league_name": "Friendlies Clubs",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-15T18:00:00+00:00",
-      "kickoff_wat": "2026-07-15T19:00:00+01:00",
+      "kickoff_utc": "2026-07-16T00:30:00+00:00",
+      "kickoff_wat": "2026-07-16T01:30:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 59,
-        "name": "Preston"
+        "id": 1600,
+        "name": "Houston Dynamo"
       },
       "away_team": {
-        "id": 4679,
-        "name": "Chorley"
+        "id": 1138,
+        "name": "America de Cali"
       },
       "stats": {
         "home": {},
@@ -182,21 +182,21 @@
       }
     },
     {
-      "fixture_id": 1584861,
+      "fixture_id": 1550568,
       "league_id": 667,
       "league_name": "Friendlies Clubs",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-15T18:00:00+00:00",
-      "kickoff_wat": "2026-07-15T19:00:00+01:00",
+      "kickoff_utc": "2026-07-16T01:30:00+00:00",
+      "kickoff_wat": "2026-07-16T02:30:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 16995,
-        "name": "Skegness Town"
+        "id": 1606,
+        "name": "Real Salt Lake"
       },
       "away_team": {
-        "id": 1340,
-        "name": "Scunthorpe"
+        "id": 44,
+        "name": "Burnley"
       },
       "stats": {
         "home": {},
@@ -272,111 +272,21 @@
       }
     },
     {
-      "fixture_id": 1554375,
-      "league_id": 2,
-      "league_name": "UEFA Champions League",
-      "country": "World",
-      "season": 2026,
-      "kickoff_utc": "2026-07-15T18:15:00+00:00",
-      "kickoff_wat": "2026-07-15T19:15:00+01:00",
-      "session": "evening",
-      "home_team": {
-        "id": 15847,
-        "name": "Atert Bissen"
-      },
-      "away_team": {
-        "id": 701,
-        "name": "KI Klaksvik"
-      },
-      "stats": {
-        "home": {},
-        "away": {}
-      },
-      "standings": {
-        "home": {},
-        "away": {}
-      },
-      "h2h": [],
-      "injuries": {
-        "home": [],
-        "away": []
-      },
-      "predictions": {
-        "over_1_5": {
-          "market": "over_1_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-1.5 historical rate: unavailable"
-          ]
-        },
-        "over_2_5": {
-          "market": "over_2_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-2.5 historical rate: unavailable"
-          ]
-        },
-        "home_over": {
-          "market": "home_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home team expected goals estimate: 0.00"
-          ]
-        },
-        "away_over": {
-          "market": "away_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Away team expected goals estimate: 0.00"
-          ]
-        },
-        "home_win": {
-          "market": "home_win",
-          "confidence": 54.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home advantage applied",
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: home 0 out, opponent 0 out"
-          ]
-        },
-        "away_win": {
-          "market": "away_win",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: away 0 out, opponent 0 out"
-          ]
-        }
-      }
-    },
-    {
-      "fixture_id": 1584862,
+      "fixture_id": 1589269,
       "league_id": 667,
       "league_name": "Friendlies Clubs",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-15T18:15:00+00:00",
-      "kickoff_wat": "2026-07-15T19:15:00+01:00",
+      "kickoff_utc": "2026-07-16T01:30:00+00:00",
+      "kickoff_wat": "2026-07-16T02:30:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 18290,
-        "name": "Ards Rangers"
+        "id": 294,
+        "name": "Kawasaki Frontale"
       },
       "away_team": {
-        "id": 19025,
-        "name": "Ballymacash Rangers"
+        "id": 4326,
+        "name": "Vanraure Hachinohe"
       },
       "stats": {
         "home": {},
@@ -452,21 +362,21 @@
       }
     },
     {
-      "fixture_id": 1554421,
+      "fixture_id": 1554419,
       "league_id": 848,
       "league_name": "UEFA Europa Conference League",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-15T18:30:00+00:00",
-      "kickoff_wat": "2026-07-15T19:30:00+01:00",
+      "kickoff_utc": "2026-07-16T18:00:00+00:00",
+      "kickoff_wat": "2026-07-16T19:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 3745,
-        "name": "De\u010di\u0107"
+        "id": 12733,
+        "name": "Ballkani"
       },
       "away_team": {
-        "id": 661,
-        "name": "FK Liepaja"
+        "id": 357,
+        "name": "GAP Connah S Quay FC"
       },
       "stats": {
         "home": {},
@@ -542,21 +452,21 @@
       }
     },
     {
-      "fixture_id": 1554377,
-      "league_id": 2,
-      "league_name": "UEFA Champions League",
+      "fixture_id": 1554433,
+      "league_id": 848,
+      "league_name": "UEFA Europa Conference League",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-15T19:00:00+00:00",
-      "kickoff_wat": "2026-07-15T20:00:00+01:00",
+      "kickoff_utc": "2026-07-16T18:00:00+00:00",
+      "kickoff_wat": "2026-07-16T19:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 3327,
-        "name": "Egnatia Rrogozhin\u00eb"
+        "id": 609,
+        "name": "Shkendija"
       },
       "away_team": {
-        "id": 2271,
-        "name": "Petrocub"
+        "id": 10125,
+        "name": "Europa"
       },
       "stats": {
         "home": {},
@@ -632,21 +542,21 @@
       }
     },
     {
-      "fixture_id": 1554386,
-      "league_id": 2,
-      "league_name": "UEFA Champions League",
+      "fixture_id": 1554434,
+      "league_id": 848,
+      "league_name": "UEFA Europa Conference League",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-15T19:00:00+00:00",
-      "kickoff_wat": "2026-07-15T20:00:00+01:00",
+      "kickoff_utc": "2026-07-16T18:00:00+00:00",
+      "kickoff_wat": "2026-07-16T19:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 673,
-        "name": "Sutjeska"
+        "id": 4331,
+        "name": "Sileks"
       },
       "away_team": {
-        "id": 664,
-        "name": "Kairat Almaty"
+        "id": 394,
+        "name": "Dinamo Minsk"
       },
       "stats": {
         "home": {},
@@ -717,105 +627,13 @@
             "Goal-difference-per-game gap: +0.00",
             "Head-to-head history unavailable",
             "Injuries/suspensions: away 0 out, opponent 0 out"
-          ]
-        }
-      }
-    },
-    {
-      "fixture_id": 1586077,
-      "league_id": 1,
-      "league_name": "World Cup",
-      "country": "World",
-      "season": 2026,
-      "kickoff_utc": "2026-07-15T19:00:00+00:00",
-      "kickoff_wat": "2026-07-15T20:00:00+01:00",
-      "session": "evening",
-      "home_team": {
-        "id": 10,
-        "name": "England"
-      },
-      "away_team": {
-        "id": 26,
-        "name": "Argentina"
-      },
-      "stats": {
-        "home": {},
-        "away": {}
-      },
-      "standings": {
-        "home": {},
-        "away": {}
-      },
-      "h2h": [],
-      "injuries": {
-        "home": [
-          "J. Quansah (Suspension Through Sports Court)"
-        ],
-        "away": []
-      },
-      "predictions": {
-        "over_1_5": {
-          "market": "over_1_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-1.5 historical rate: unavailable"
-          ]
-        },
-        "over_2_5": {
-          "market": "over_2_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-2.5 historical rate: unavailable"
-          ]
-        },
-        "home_over": {
-          "market": "home_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home team expected goals estimate: 0.00"
-          ]
-        },
-        "away_over": {
-          "market": "away_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Away team expected goals estimate: 0.00"
-          ]
-        },
-        "home_win": {
-          "market": "home_win",
-          "confidence": 52.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home advantage applied",
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: home 1 out, opponent 0 out"
-          ]
-        },
-        "away_win": {
-          "market": "away_win",
-          "confidence": 52.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: away 0 out, opponent 1 out"
           ]
         }
       }
     }
   ],
   "partial_coverage": true,
-  "coverage_note": "16 fixtures matched the whitelist and session window, but only the 14 earliest kickoffs were processed to stay within the daily API request budget. API request budget ran out mid-session; 5 fixture(s) were left without full stats and are excluded from this session's output.",
+  "coverage_note": "23 fixtures matched the whitelist and session window, but only the 14 earliest kickoffs were processed to stay within the daily API request budget. API request budget ran out mid-session; 7 fixture(s) were left without full stats and are excluded from this session's output.",
   "session": "evening",
-  "generated_at_wat": "2026-07-15T21:45:16.023475+01:00"
+  "generated_at_wat": "2026-07-16T21:35:20.429889+01:00"
 }

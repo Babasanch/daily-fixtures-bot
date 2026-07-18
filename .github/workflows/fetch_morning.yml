@@ -1,14 +1,10 @@
 name: Fetch Morning Session
 
-# Runs at 06:30 UTC = 07:30 WAT, ahead of the 07:00 WAT morning session
-# window, giving the API-Football data a head start before users query it.
 on:
-  schedule:
-    - cron: "30 5 * * *"   # 05:30 UTC = 06:30 WAT
-  workflow_dispatch: {}     # allows manual trigger from the Actions tab
+  workflow_dispatch: {}
 
 permissions:
-  contents: write   # needed to commit the updated data/*.json back to main
+  contents: write
 
 jobs:
   fetch:

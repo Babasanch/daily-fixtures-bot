@@ -1,10 +1,6 @@
 name: Fetch Evening Session
 
-# Runs at 17:30 UTC = 18:30 WAT, ahead of the 19:00 WAT evening session
-# window.
 on:
-  schedule:
-    - cron: "30 17 * * *"  # 17:30 UTC = 18:30 WAT
   workflow_dispatch: {}
 
 permissions:

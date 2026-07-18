@@ -1,0 +1,609 @@
+{
+  "target_date": "2026-07-17",
+  "fixtures": [
+    {
+      "fixture_id": 1519406,
+      "league_id": 242,
+      "league_name": "Liga Pro",
+      "country": "Ecuador",
+      "season": 2026,
+      "kickoff_utc": "2026-07-17T00:00:00+00:00",
+      "kickoff_wat": "2026-07-17T01:00:00+01:00",
+      "session": "evening",
+      "home_team": {
+        "id": 1992,
+        "name": "Orense SC"
+      },
+      "away_team": {
+        "id": 1148,
+        "name": "Emelec"
+      },
+      "stats": {
+        "home": {},
+        "away": {}
+      },
+      "standings": {
+        "home": {},
+        "away": {}
+      },
+      "h2h": [],
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "predictions": {
+        "over_1_5": {
+          "market": "over_1_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-1.5 historical rate: unavailable"
+          ]
+        },
+        "over_2_5": {
+          "market": "over_2_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-2.5 historical rate: unavailable"
+          ]
+        },
+        "home_over": {
+          "market": "home_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home team expected goals estimate: 0.00"
+          ]
+        },
+        "away_over": {
+          "market": "away_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Away team expected goals estimate: 0.00"
+          ]
+        },
+        "home_win": {
+          "market": "home_win",
+          "confidence": 54.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home advantage applied",
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: home 0 out, opponent 0 out"
+          ]
+        },
+        "away_win": {
+          "market": "away_win",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: away 0 out, opponent 0 out"
+          ]
+        }
+      }
+    },
+    {
+      "fixture_id": 1526575,
+      "league_id": 243,
+      "league_name": "Liga Pro Serie B",
+      "country": "Ecuador",
+      "season": 2026,
+      "kickoff_utc": "2026-07-17T00:00:00+00:00",
+      "kickoff_wat": "2026-07-17T01:00:00+01:00",
+      "session": "evening",
+      "home_team": {
+        "id": 19414,
+        "name": "Santo Domingo"
+      },
+      "away_team": {
+        "id": 26031,
+        "name": "Deportivo Cuenca Juniors"
+      },
+      "stats": {
+        "home": {},
+        "away": {}
+      },
+      "standings": {
+        "home": {},
+        "away": {}
+      },
+      "h2h": [],
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "predictions": {
+        "over_1_5": {
+          "market": "over_1_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-1.5 historical rate: unavailable"
+          ]
+        },
+        "over_2_5": {
+          "market": "over_2_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-2.5 historical rate: unavailable"
+          ]
+        },
+        "home_over": {
+          "market": "home_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home team expected goals estimate: 0.00"
+          ]
+        },
+        "away_over": {
+          "market": "away_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Away team expected goals estimate: 0.00"
+          ]
+        },
+        "home_win": {
+          "market": "home_win",
+          "confidence": 54.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home advantage applied",
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: home 0 out, opponent 0 out"
+          ]
+        },
+        "away_win": {
+          "market": "away_win",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: away 0 out, opponent 0 out"
+          ]
+        }
+      }
+    },
+    {
+      "fixture_id": 1490326,
+      "league_id": 253,
+      "league_name": "Major League Soccer",
+      "country": "USA",
+      "season": 2026,
+      "kickoff_utc": "2026-07-17T00:30:00+00:00",
+      "kickoff_wat": "2026-07-17T01:30:00+01:00",
+      "session": "evening",
+      "home_team": {
+        "id": 1607,
+        "name": "Chicago Fire"
+      },
+      "away_team": {
+        "id": 1603,
+        "name": "Vancouver Whitecaps"
+      },
+      "stats": {
+        "home": {},
+        "away": {}
+      },
+      "standings": {
+        "home": {},
+        "away": {}
+      },
+      "h2h": [],
+      "injuries": {
+        "home": [
+          "A. Franco (Knee Injury)",
+          "J. Bamba (Inactive)",
+          "L. Barroso (Lower-Body Injury)",
+          "A. Franco (Knee Injury)",
+          "J. Bamba (Inactive)",
+          "L. Barroso (Lower-Body Injury)"
+        ],
+        "away": [
+          "S. Berhalter (Inactive)",
+          "K. G. Cabrera Nakamura (Foot Injury)",
+          "B. Halbouni (Knee Injury)",
+          "R. Priso (Muscle Injury)",
+          "C. Sabaly (Hamstring Injury)",
+          "E. Sabbi (Groin Injury)",
+          "S. Berhalter (Inactive)",
+          "K. G. Cabrera Nakamura (Foot Injury)",
+          "B. Halbouni (Knee Injury)",
+          "R. Priso (Muscle Injury)",
+          "C. Sabaly (Hamstring Injury)",
+          "E. Sabbi (Groin Injury)"
+        ]
+      },
+      "predictions": {
+        "over_1_5": {
+          "market": "over_1_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-1.5 historical rate: unavailable"
+          ]
+        },
+        "over_2_5": {
+          "market": "over_2_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-2.5 historical rate: unavailable"
+          ]
+        },
+        "home_over": {
+          "market": "home_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home team expected goals estimate: 0.00"
+          ]
+        },
+        "away_over": {
+          "market": "away_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Away team expected goals estimate: 0.00"
+          ]
+        },
+        "home_win": {
+          "market": "home_win",
+          "confidence": 62.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home advantage applied",
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: home 6 out, opponent 12 out"
+          ]
+        },
+        "away_win": {
+          "market": "away_win",
+          "confidence": 42.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: away 12 out, opponent 6 out"
+          ]
+        }
+      }
+    },
+    {
+      "fixture_id": 1490327,
+      "league_id": 253,
+      "league_name": "Major League Soccer",
+      "country": "USA",
+      "season": 2026,
+      "kickoff_utc": "2026-07-17T00:30:00+00:00",
+      "kickoff_wat": "2026-07-17T01:30:00+01:00",
+      "session": "evening",
+      "home_team": {
+        "id": 20787,
+        "name": "St. Louis City"
+      },
+      "away_team": {
+        "id": 1611,
+        "name": "Sporting Kansas City"
+      },
+      "stats": {
+        "home": {},
+        "away": {}
+      },
+      "standings": {
+        "home": {},
+        "away": {}
+      },
+      "h2h": [],
+      "injuries": {
+        "home": [
+          "R. Burki (Thigh Injury)",
+          "Celio Pompeu (Knee Injury)",
+          "C. Durkin (Yellow Cards)",
+          "R. Burki (Thigh Injury)",
+          "Celio Pompeu (Knee Injury)",
+          "C. Durkin (Yellow Cards)"
+        ],
+        "away": [
+          "T. Calheira (Ankle Injury)",
+          "Diego Borges (Muscle Injury)",
+          "J. Reynolds (Muscle Injury)",
+          "T. Calheira (Ankle Injury)",
+          "Diego Borges (Muscle Injury)",
+          "J. Reynolds (Muscle Injury)"
+        ]
+      },
+      "predictions": {
+        "over_1_5": {
+          "market": "over_1_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-1.5 historical rate: unavailable"
+          ]
+        },
+        "over_2_5": {
+          "market": "over_2_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-2.5 historical rate: unavailable"
+          ]
+        },
+        "home_over": {
+          "market": "home_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home team expected goals estimate: 0.00"
+          ]
+        },
+        "away_over": {
+          "market": "away_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Away team expected goals estimate: 0.00"
+          ]
+        },
+        "home_win": {
+          "market": "home_win",
+          "confidence": 54.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home advantage applied",
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: home 6 out, opponent 6 out"
+          ]
+        },
+        "away_win": {
+          "market": "away_win",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: away 6 out, opponent 6 out"
+          ]
+        }
+      }
+    },
+    {
+      "fixture_id": 1550894,
+      "league_id": 262,
+      "league_name": "Liga MX",
+      "country": "Mexico",
+      "season": 2026,
+      "kickoff_utc": "2026-07-17T01:00:00+00:00",
+      "kickoff_wat": "2026-07-17T02:00:00+01:00",
+      "session": "evening",
+      "home_team": {
+        "id": 2288,
+        "name": "Necaxa"
+      },
+      "away_team": {
+        "id": 2312,
+        "name": "Atlante FC"
+      },
+      "stats": {
+        "home": {},
+        "away": {}
+      },
+      "standings": {
+        "home": {},
+        "away": {}
+      },
+      "h2h": [],
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "predictions": {
+        "over_1_5": {
+          "market": "over_1_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-1.5 historical rate: unavailable"
+          ]
+        },
+        "over_2_5": {
+          "market": "over_2_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-2.5 historical rate: unavailable"
+          ]
+        },
+        "home_over": {
+          "market": "home_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home team expected goals estimate: 0.00"
+          ]
+        },
+        "away_over": {
+          "market": "away_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Away team expected goals estimate: 0.00"
+          ]
+        },
+        "home_win": {
+          "market": "home_win",
+          "confidence": 54.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home advantage applied",
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: home 0 out, opponent 0 out"
+          ]
+        },
+        "away_win": {
+          "market": "away_win",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: away 0 out, opponent 0 out"
+          ]
+        }
+      }
+    },
+    {
+      "fixture_id": 1490328,
+      "league_id": 253,
+      "league_name": "Major League Soccer",
+      "country": "USA",
+      "season": 2026,
+      "kickoff_utc": "2026-07-17T02:30:00+00:00",
+      "kickoff_wat": "2026-07-17T03:30:00+01:00",
+      "session": "evening",
+      "home_team": {
+        "id": 1595,
+        "name": "Seattle Sounders"
+      },
+      "away_team": {
+        "id": 1617,
+        "name": "Portland Timbers"
+      },
+      "stats": {
+        "home": {},
+        "away": {}
+      },
+      "standings": {
+        "home": {},
+        "away": {}
+      },
+      "h2h": [],
+      "injuries": {
+        "home": [
+          "Y. Gomez Andrade (Hamstring Injury)",
+          "Kim Kee-Hee (Muscle Injury)",
+          "N. Petkovic (Knee Injury)",
+          "A. Roldan (Hip Injury)",
+          "C. Roldan (Muscle Injury)",
+          "R. Sailor (Knee Injury)",
+          "P. de La Vega (Knee Injury)",
+          "Y. Gomez Andrade (Hamstring Injury)",
+          "Kim Kee-Hee (Muscle Injury)",
+          "N. Petkovic (Knee Injury)",
+          "A. Roldan (Hip Injury)",
+          "C. Roldan (Muscle Injury)",
+          "R. Sailor (Knee Injury)",
+          "P. de La Vega (Knee Injury)"
+        ],
+        "away": [
+          "O. Fernandez (Foot Injury)",
+          "G. Guerra (Abdominal strain)",
+          "Z. McGraw (Back Injury)",
+          "J. Mosquera (Foot Injury)",
+          "K. Velde (Personal Reasons)",
+          "O. Fernandez (Foot Injury)",
+          "G. Guerra (Abdominal strain)",
+          "Z. McGraw (Back Injury)",
+          "J. Mosquera (Foot Injury)",
+          "K. Velde (Personal Reasons)"
+        ]
+      },
+      "predictions": {
+        "over_1_5": {
+          "market": "over_1_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-1.5 historical rate: unavailable"
+          ]
+        },
+        "over_2_5": {
+          "market": "over_2_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-2.5 historical rate: unavailable"
+          ]
+        },
+        "home_over": {
+          "market": "home_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home team expected goals estimate: 0.00"
+          ]
+        },
+        "away_over": {
+          "market": "away_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Away team expected goals estimate: 0.00"
+          ]
+        },
+        "home_win": {
+          "market": "home_win",
+          "confidence": 46.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home advantage applied",
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: home 14 out, opponent 10 out"
+          ]
+        },
+        "away_win": {
+          "market": "away_win",
+          "confidence": 58.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: away 10 out, opponent 14 out"
+          ]
+        }
+      }
+    }
+  ],
+  "partial_coverage": true,
+  "coverage_note": "42 fixtures matched the whitelist and session window, but only the 14 earliest kickoffs were processed to stay within the daily API request budget. API request budget ran out mid-session; 8 fixture(s) were left without full stats and are excluded from this session's output.",
+  "session": "evening",
+  "generated_at_wat": "2026-07-17T21:32:07.559509+01:00"
+}

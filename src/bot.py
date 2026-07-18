@@ -131,6 +131,8 @@ def cmd_start(chat_id: int, args: List[str]) -> None:
     text = (
         "*Welcome to your Daily Football Predictions Bot* ⚽\n\n"
         "Available commands:\n"
+        "/morning — All morning session fixtures, ranked\n"
+        "/evening — All evening session fixtures, ranked\n"
         "/homewin — Best home win picks\n"
         "/awaywin — Best away win picks\n"
         "/over15 — Best Over 1.5 goals picks\n"
@@ -138,10 +140,50 @@ def cmd_start(chat_id: int, args: List[str]) -> None:
         "/banker — Safest selection (morning & evening)\n"
         "/acca5 — Build a 5-leg accumulator\n"
         "/single — Best single bet of the day (morning & evening)\n\n"
-        f"Picks shown are those scoring {config.CONFIDENCE_THRESHOLD}%+ on "
-        "a transparent confidence model — not a guarantee. Always bet "
+        f"Picks shown on the strict commands are those scoring "
+        f"{config.CONFIDENCE_THRESHOLD}%+ on a transparent confidence model "
+        "— not a guarantee. /morning and /evening show everything "
+        "processed that session, regardless of score. Always bet "
         "responsibly."
     )
+    send_message(chat_id, text)
+
+
+def _format_fixture_browse_list(fixtures: List[Dict[str, Any]], title: str, limit: int = 20) -> str:
+    """
+    Shows every fixture processed for a session (not threshold-gated),
+    ranked by each fixture's best market score, so you can see what data
+    the bot actually had to work with -- useful for sanity-checking
+    coverage on days when no picks clear the strict threshold.
+    """
+    ranked = rank.rank_all_fixtures(fixtures)
+    if not ranked:
+        return (
+            f"*{title}*\n\n"
+            "No fixtures were processed for this session yet. Check back "
+            "after the next scheduled fetch, or trigger it manually from "
+            "the Actions tab."
+        )
+    lines = [f"*{title}*\n_Showing {min(limit, len(ranked))} of {len(ranked)} fixtures, ranked by best market score_\n"]
+    for i, f in enumerate(ranked[:limit], 1):
+        market_label = MARKET_LABELS.get(f["best_market"], f["best_market"])
+        lines.append(
+            f"{i}. *{f['home_team']}* vs *{f['away_team']}*\n"
+            f"   {f.get('league', '')} ({f.get('country', '')}) · {_kickoff_display(f.get('kickoff_wat'))}\n"
+            f"   Best: {market_label} — *{f['confidence']}%*"
+        )
+    return "\n\n".join(lines)
+
+
+def cmd_morning(chat_id: int, args: List[str]) -> None:
+    data = storage.load_session("morning")
+    text = _format_fixture_browse_list(data.get("fixtures", []), "🌅 Morning Session Fixtures") + _coverage_warning("morning")
+    send_message(chat_id, text)
+
+
+def cmd_evening(chat_id: int, args: List[str]) -> None:
+    data = storage.load_session("evening")
+    text = _format_fixture_browse_list(data.get("fixtures", []), "🌆 Evening Session Fixtures") + _coverage_warning("evening")
     send_message(chat_id, text)
 
 
@@ -235,6 +277,8 @@ def cmd_acca5(chat_id: int, args: List[str]) -> None:
 
 COMMAND_HANDLERS = {
     "/start": cmd_start,
+    "/morning": cmd_morning,
+    "/evening": cmd_evening,
     "/homewin": cmd_homewin,
     "/awaywin": cmd_awaywin,
     "/over15": cmd_over15,

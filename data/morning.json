@@ -1,22 +1,22 @@
 {
-  "target_date": "2026-07-19",
+  "target_date": "2026-07-20",
   "fixtures": [
     {
-      "fixture_id": 1519408,
+      "fixture_id": 1519412,
       "league_id": 242,
       "league_name": "Liga Pro",
       "country": "Ecuador",
       "season": 2026,
-      "kickoff_utc": "2026-07-19T00:00:00+00:00",
-      "kickoff_wat": "2026-07-19T01:00:00+01:00",
+      "kickoff_utc": "2026-07-20T00:15:00+00:00",
+      "kickoff_wat": "2026-07-20T01:15:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 1152,
-        "name": "Barcelona SC"
+        "id": 1153,
+        "name": "Independiente del Valle"
       },
       "away_team": {
-        "id": 18762,
-        "name": "Libertad"
+        "id": 1148,
+        "name": "Emelec"
       },
       "stats": {
         "home": {},
@@ -92,21 +92,21 @@
       }
     },
     {
-      "fixture_id": 1493578,
-      "league_id": 255,
-      "league_name": "USL Championship",
-      "country": "USA",
+      "fixture_id": 1498657,
+      "league_id": 129,
+      "league_name": "Primera Nacional",
+      "country": "Argentina",
       "season": 2026,
-      "kickoff_utc": "2026-07-19T00:30:00+00:00",
-      "kickoff_wat": "2026-07-19T01:30:00+01:00",
+      "kickoff_utc": "2026-07-20T23:00:00+00:00",
+      "kickoff_wat": "2026-07-21T00:00:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 4022,
-        "name": "FC Tulsa"
+        "id": 8377,
+        "name": "Colegiales"
       },
       "away_team": {
-        "id": 3993,
-        "name": "El Paso Locomotive"
+        "id": 1963,
+        "name": "Midland"
       },
       "stats": {
         "home": {},
@@ -182,21 +182,111 @@
       }
     },
     {
-      "fixture_id": 1493583,
-      "league_id": 255,
-      "league_name": "USL Championship",
-      "country": "USA",
+      "fixture_id": 1498663,
+      "league_id": 129,
+      "league_name": "Primera Nacional",
+      "country": "Argentina",
       "season": 2026,
-      "kickoff_utc": "2026-07-19T01:00:00+00:00",
-      "kickoff_wat": "2026-07-19T02:00:00+01:00",
+      "kickoff_utc": "2026-07-20T23:00:00+00:00",
+      "kickoff_wat": "2026-07-21T00:00:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 4017,
-        "name": "San Antonio"
+        "id": 444,
+        "name": "Patronato"
       },
       "away_team": {
-        "id": 3998,
-        "name": "Las Vegas Lights"
+        "id": 1948,
+        "name": "Atlanta"
+      },
+      "stats": {
+        "home": {},
+        "away": {}
+      },
+      "standings": {
+        "home": {},
+        "away": {}
+      },
+      "h2h": [],
+      "injuries": {
+        "home": null,
+        "away": null
+      },
+      "predictions": {
+        "over_1_5": {
+          "market": "over_1_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-1.5 historical rate: unavailable"
+          ]
+        },
+        "over_2_5": {
+          "market": "over_2_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-2.5 historical rate: unavailable"
+          ]
+        },
+        "home_over": {
+          "market": "home_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home team expected goals estimate: 0.00"
+          ]
+        },
+        "away_over": {
+          "market": "away_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Away team expected goals estimate: 0.00"
+          ]
+        },
+        "home_win": {
+          "market": "home_win",
+          "confidence": 54.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home advantage applied",
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injury/suspension data unavailable"
+          ]
+        },
+        "away_win": {
+          "market": "away_win",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injury/suspension data unavailable"
+          ]
+        }
+      }
+    },
+    {
+      "fixture_id": 1498664,
+      "league_id": 129,
+      "league_name": "Primera Nacional",
+      "country": "Argentina",
+      "season": 2026,
+      "kickoff_utc": "2026-07-20T23:00:00+00:00",
+      "kickoff_wat": "2026-07-21T00:00:00+01:00",
+      "session": "morning",
+      "home_team": {
+        "id": 480,
+        "name": "Quilmes"
+      },
+      "away_team": {
+        "id": 479,
+        "name": "Gimnasia Jujuy"
       },
       "stats": {
         "home": {},
@@ -272,471 +362,21 @@
       }
     },
     {
-      "fixture_id": 1550901,
-      "league_id": 262,
-      "league_name": "Liga MX",
-      "country": "Mexico",
+      "fixture_id": 1576802,
+      "league_id": 268,
+      "league_name": "Primera Divisi\u00f3n - Apertura",
+      "country": "Uruguay",
       "season": 2026,
-      "kickoff_utc": "2026-07-19T01:05:00+00:00",
-      "kickoff_wat": "2026-07-19T02:05:00+01:00",
+      "kickoff_utc": "2026-07-20T23:00:00+00:00",
+      "kickoff_wat": "2026-07-21T00:00:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 2282,
-        "name": "Monterrey"
+        "id": 2350,
+        "name": "Defensor Sporting"
       },
       "away_team": {
-        "id": 2285,
-        "name": "Santos Laguna"
-      },
-      "stats": {
-        "home": {},
-        "away": {}
-      },
-      "standings": {
-        "home": {},
-        "away": {}
-      },
-      "h2h": [],
-      "injuries": {
-        "home": [],
-        "away": []
-      },
-      "predictions": {
-        "over_1_5": {
-          "market": "over_1_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-1.5 historical rate: unavailable"
-          ]
-        },
-        "over_2_5": {
-          "market": "over_2_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-2.5 historical rate: unavailable"
-          ]
-        },
-        "home_over": {
-          "market": "home_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home team expected goals estimate: 0.00"
-          ]
-        },
-        "away_over": {
-          "market": "away_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Away team expected goals estimate: 0.00"
-          ]
-        },
-        "home_win": {
-          "market": "home_win",
-          "confidence": 54.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home advantage applied",
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: home 0 out, opponent 0 out"
-          ]
-        },
-        "away_win": {
-          "market": "away_win",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: away 0 out, opponent 0 out"
-          ]
-        }
-      }
-    },
-    {
-      "fixture_id": 1550900,
-      "league_id": 262,
-      "league_name": "Liga MX",
-      "country": "Mexico",
-      "season": 2026,
-      "kickoff_utc": "2026-07-19T01:07:00+00:00",
-      "kickoff_wat": "2026-07-19T02:07:00+01:00",
-      "session": "morning",
-      "home_team": {
-        "id": 2278,
-        "name": "Guadalajara Chivas"
-      },
-      "away_team": {
-        "id": 2281,
-        "name": "Toluca"
-      },
-      "stats": {
-        "home": {},
-        "away": {}
-      },
-      "standings": {
-        "home": {},
-        "away": {}
-      },
-      "h2h": [],
-      "injuries": {
-        "home": [],
-        "away": []
-      },
-      "predictions": {
-        "over_1_5": {
-          "market": "over_1_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-1.5 historical rate: unavailable"
-          ]
-        },
-        "over_2_5": {
-          "market": "over_2_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-2.5 historical rate: unavailable"
-          ]
-        },
-        "home_over": {
-          "market": "home_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home team expected goals estimate: 0.00"
-          ]
-        },
-        "away_over": {
-          "market": "away_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Away team expected goals estimate: 0.00"
-          ]
-        },
-        "home_win": {
-          "market": "home_win",
-          "confidence": 54.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home advantage applied",
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: home 0 out, opponent 0 out"
-          ]
-        },
-        "away_win": {
-          "market": "away_win",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: away 0 out, opponent 0 out"
-          ]
-        }
-      }
-    },
-    {
-      "fixture_id": 1493580,
-      "league_id": 255,
-      "league_name": "USL Championship",
-      "country": "USA",
-      "season": 2026,
-      "kickoff_utc": "2026-07-19T02:30:00+00:00",
-      "kickoff_wat": "2026-07-19T03:30:00+01:00",
-      "session": "morning",
-      "home_team": {
-        "id": 4009,
-        "name": "Phoenix Rising"
-      },
-      "away_team": {
-        "id": 18375,
-        "name": "Monterey Bay"
-      },
-      "stats": {
-        "home": {},
-        "away": {}
-      },
-      "standings": {
-        "home": {},
-        "away": {}
-      },
-      "h2h": [],
-      "injuries": {
-        "home": [],
-        "away": []
-      },
-      "predictions": {
-        "over_1_5": {
-          "market": "over_1_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-1.5 historical rate: unavailable"
-          ]
-        },
-        "over_2_5": {
-          "market": "over_2_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-2.5 historical rate: unavailable"
-          ]
-        },
-        "home_over": {
-          "market": "home_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home team expected goals estimate: 0.00"
-          ]
-        },
-        "away_over": {
-          "market": "away_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Away team expected goals estimate: 0.00"
-          ]
-        },
-        "home_win": {
-          "market": "home_win",
-          "confidence": 54.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home advantage applied",
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: home 0 out, opponent 0 out"
-          ]
-        },
-        "away_win": {
-          "market": "away_win",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: away 0 out, opponent 0 out"
-          ]
-        }
-      }
-    },
-    {
-      "fixture_id": 1550902,
-      "league_id": 262,
-      "league_name": "Liga MX",
-      "country": "Mexico",
-      "season": 2026,
-      "kickoff_utc": "2026-07-19T03:10:00+00:00",
-      "kickoff_wat": "2026-07-19T04:10:00+01:00",
-      "session": "morning",
-      "home_team": {
-        "id": 2290,
-        "name": "Club Queretaro"
-      },
-      "away_team": {
-        "id": 2287,
-        "name": "Club America"
-      },
-      "stats": {
-        "home": {},
-        "away": {}
-      },
-      "standings": {
-        "home": {},
-        "away": {}
-      },
-      "h2h": [],
-      "injuries": {
-        "home": [],
-        "away": []
-      },
-      "predictions": {
-        "over_1_5": {
-          "market": "over_1_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-1.5 historical rate: unavailable"
-          ]
-        },
-        "over_2_5": {
-          "market": "over_2_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-2.5 historical rate: unavailable"
-          ]
-        },
-        "home_over": {
-          "market": "home_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home team expected goals estimate: 0.00"
-          ]
-        },
-        "away_over": {
-          "market": "away_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Away team expected goals estimate: 0.00"
-          ]
-        },
-        "home_win": {
-          "market": "home_win",
-          "confidence": 54.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home advantage applied",
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: home 0 out, opponent 0 out"
-          ]
-        },
-        "away_win": {
-          "market": "away_win",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: away 0 out, opponent 0 out"
-          ]
-        }
-      }
-    },
-    {
-      "fixture_id": 1584908,
-      "league_id": 667,
-      "league_name": "Friendlies Clubs",
-      "country": "World",
-      "season": 2026,
-      "kickoff_utc": "2026-07-19T07:00:00+00:00",
-      "kickoff_wat": "2026-07-19T08:00:00+01:00",
-      "session": "morning",
-      "home_team": {
-        "id": 3682,
-        "name": "Ararat"
-      },
-      "away_team": {
-        "id": 26198,
-        "name": "Sardarapat"
-      },
-      "stats": {
-        "home": {},
-        "away": {}
-      },
-      "standings": {
-        "home": {},
-        "away": {}
-      },
-      "h2h": [],
-      "injuries": {
-        "home": [],
-        "away": []
-      },
-      "predictions": {
-        "over_1_5": {
-          "market": "over_1_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-1.5 historical rate: unavailable"
-          ]
-        },
-        "over_2_5": {
-          "market": "over_2_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-2.5 historical rate: unavailable"
-          ]
-        },
-        "home_over": {
-          "market": "home_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home team expected goals estimate: 0.00"
-          ]
-        },
-        "away_over": {
-          "market": "away_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Away team expected goals estimate: 0.00"
-          ]
-        },
-        "home_win": {
-          "market": "home_win",
-          "confidence": 54.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home advantage applied",
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: home 0 out, opponent 0 out"
-          ]
-        },
-        "away_win": {
-          "market": "away_win",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: away 0 out, opponent 0 out"
-          ]
-        }
-      }
-    },
-    {
-      "fixture_id": 1591888,
-      "league_id": 667,
-      "league_name": "Friendlies Clubs",
-      "country": "World",
-      "season": 2026,
-      "kickoff_utc": "2026-07-19T07:30:00+00:00",
-      "kickoff_wat": "2026-07-19T08:30:00+01:00",
-      "session": "morning",
-      "home_team": {
-        "id": 316,
-        "name": "Avispa Fukuoka"
-      },
-      "away_team": {
-        "id": 7138,
-        "name": "Osaka"
+        "id": 2358,
+        "name": "Liverpool Montevideo"
       },
       "stats": {
         "home": {},
@@ -812,8 +452,8 @@
       }
     }
   ],
-  "partial_coverage": true,
-  "coverage_note": "API request budget ran out mid-session; 12 fixture(s) were left without full stats and are excluded from this session's output.",
+  "partial_coverage": false,
+  "coverage_note": null,
   "session": "morning",
-  "generated_at_wat": "2026-07-19T22:52:58.661074+01:00"
+  "generated_at_wat": "2026-07-20T00:05:15.401969+01:00"
 }

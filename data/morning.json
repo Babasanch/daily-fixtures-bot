@@ -1,22 +1,22 @@
 {
-  "target_date": "2026-07-18",
+  "target_date": "2026-07-19",
   "fixtures": [
     {
-      "fixture_id": 1584887,
+      "fixture_id": 1591888,
       "league_id": 667,
       "league_name": "Friendlies Clubs",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-18T07:30:00+00:00",
-      "kickoff_wat": "2026-07-18T08:30:00+01:00",
+      "kickoff_utc": "2026-07-19T07:30:00+00:00",
+      "kickoff_wat": "2026-07-19T08:30:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 857,
-        "name": "Beroe"
+        "id": 316,
+        "name": "Avispa Fukuoka"
       },
       "away_team": {
-        "id": 6399,
-        "name": "Zagorets"
+        "id": 7138,
+        "name": "Osaka"
       },
       "stats": {
         "home": {},
@@ -92,21 +92,21 @@
       }
     },
     {
-      "fixture_id": 1584874,
+      "fixture_id": 1589287,
       "league_id": 667,
       "league_name": "Friendlies Clubs",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-18T07:45:00+00:00",
-      "kickoff_wat": "2026-07-18T08:45:00+01:00",
+      "kickoff_utc": "2026-07-19T08:00:00+00:00",
+      "kickoff_wat": "2026-07-19T09:00:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 303,
-        "name": "Machida Zelvia"
+        "id": 296,
+        "name": "Yokohama F. Marinos"
       },
       "away_team": {
-        "id": 4317,
-        "name": "Fujieda MYFC"
+        "id": 314,
+        "name": "Roasso Kumamoto"
       },
       "stats": {
         "home": {},
@@ -182,21 +182,21 @@
       }
     },
     {
-      "fixture_id": 1560652,
+      "fixture_id": 1583345,
       "league_id": 667,
       "league_name": "Friendlies Clubs",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-18T08:00:00+00:00",
-      "kickoff_wat": "2026-07-18T09:00:00+01:00",
+      "kickoff_utc": "2026-07-19T09:00:00+00:00",
+      "kickoff_wat": "2026-07-19T10:00:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 6786,
-        "name": "Akron"
+        "id": 17398,
+        "name": "Kluczevia Stargard"
       },
       "away_team": {
-        "id": 1088,
-        "name": "Dynamo"
+        "id": 16263,
+        "name": "Warta Gorz\u00f3w"
       },
       "stats": {
         "home": {},
@@ -272,21 +272,21 @@
       }
     },
     {
-      "fixture_id": 1560672,
+      "fixture_id": 1584907,
       "league_id": 667,
       "league_name": "Friendlies Clubs",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-18T08:00:00+00:00",
-      "kickoff_wat": "2026-07-18T09:00:00+01:00",
+      "kickoff_utc": "2026-07-19T09:00:00+00:00",
+      "kickoff_wat": "2026-07-19T10:00:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 10547,
-        "name": "Inter Bratislava"
+        "id": 1339,
+        "name": "Rochdale"
       },
       "away_team": {
-        "id": 14054,
-        "name": "Galanta"
+        "id": 2897,
+        "name": "Al-Rayyan SC"
       },
       "stats": {
         "home": {},
@@ -362,21 +362,21 @@
       }
     },
     {
-      "fixture_id": 1560694,
+      "fixture_id": 1584909,
       "league_id": 667,
       "league_name": "Friendlies Clubs",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-18T08:00:00+00:00",
-      "kickoff_wat": "2026-07-18T09:00:00+01:00",
+      "kickoff_utc": "2026-07-19T10:00:00+00:00",
+      "kickoff_wat": "2026-07-19T11:00:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 675,
-        "name": "Vasas"
+        "id": 218,
+        "name": "Tondela"
       },
       "away_team": {
-        "id": 2404,
-        "name": "Soroksar"
+        "id": 225,
+        "name": "Nacional"
       },
       "stats": {
         "home": {},
@@ -452,21 +452,21 @@
       }
     },
     {
-      "fixture_id": 1583342,
-      "league_id": 667,
-      "league_name": "Friendlies Clubs",
-      "country": "World",
+      "fixture_id": 1510383,
+      "league_id": 293,
+      "league_name": "K League 2",
+      "country": "South-Korea",
       "season": 2026,
-      "kickoff_utc": "2026-07-18T08:00:00+00:00",
-      "kickoff_wat": "2026-07-18T09:00:00+01:00",
+      "kickoff_utc": "2026-07-19T10:30:00+00:00",
+      "kickoff_wat": "2026-07-19T11:30:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 19618,
-        "name": "M\u0142awianka M\u0142awa"
+        "id": 7061,
+        "name": "Cheongju"
       },
       "away_team": {
-        "id": 12857,
-        "name": "Sok\u00f3\u0142 Ostr\u00f3da"
+        "id": 7060,
+        "name": "Cheonan City"
       },
       "stats": {
         "home": {},
@@ -542,21 +542,21 @@
       }
     },
     {
-      "fixture_id": 1583375,
-      "league_id": 667,
-      "league_name": "Friendlies Clubs",
-      "country": "World",
+      "fixture_id": 1510384,
+      "league_id": 293,
+      "league_name": "K League 2",
+      "country": "South-Korea",
       "season": 2026,
-      "kickoff_utc": "2026-07-18T08:00:00+00:00",
-      "kickoff_wat": "2026-07-18T09:00:00+01:00",
+      "kickoff_utc": "2026-07-19T10:30:00+00:00",
+      "kickoff_wat": "2026-07-19T11:30:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 16274,
-        "name": "Wis\u0142oka D\u0119bica"
+        "id": 2751,
+        "name": "Gyeongnam FC"
       },
       "away_team": {
-        "id": 26185,
-        "name": "Sok\u00f3\u0142 Kolb."
+        "id": 2758,
+        "name": "Ansan Greeners"
       },
       "stats": {
         "home": {},
@@ -632,21 +632,21 @@
       }
     },
     {
-      "fixture_id": 1584875,
-      "league_id": 667,
-      "league_name": "Friendlies Clubs",
-      "country": "World",
+      "fixture_id": 1510385,
+      "league_id": 293,
+      "league_name": "K League 2",
+      "country": "South-Korea",
       "season": 2026,
-      "kickoff_utc": "2026-07-18T08:00:00+00:00",
-      "kickoff_wat": "2026-07-18T09:00:00+01:00",
+      "kickoff_utc": "2026-07-19T10:30:00+00:00",
+      "kickoff_wat": "2026-07-19T11:30:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 4714,
-        "name": "Ajka"
+        "id": 2765,
+        "name": "Suwon Bluewings"
       },
       "away_team": {
-        "id": 2409,
-        "name": "Csakvar"
+        "id": 7098,
+        "name": "Paju Citizen"
       },
       "stats": {
         "home": {},
@@ -722,471 +722,21 @@
       }
     },
     {
-      "fixture_id": 1584876,
-      "league_id": 667,
-      "league_name": "Friendlies Clubs",
-      "country": "World",
+      "fixture_id": 1510386,
+      "league_id": 293,
+      "league_name": "K League 2",
+      "country": "South-Korea",
       "season": 2026,
-      "kickoff_utc": "2026-07-18T08:00:00+00:00",
-      "kickoff_wat": "2026-07-18T09:00:00+01:00",
+      "kickoff_utc": "2026-07-19T10:30:00+00:00",
+      "kickoff_wat": "2026-07-19T11:30:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 307,
-        "name": "Yokohama FC"
+        "id": 9171,
+        "name": "Yongin City"
       },
       "away_team": {
-        "id": 805,
-        "name": "Kitakyushu"
-      },
-      "stats": {
-        "home": {},
-        "away": {}
-      },
-      "standings": {
-        "home": {},
-        "away": {}
-      },
-      "h2h": [],
-      "injuries": {
-        "home": [],
-        "away": []
-      },
-      "predictions": {
-        "over_1_5": {
-          "market": "over_1_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-1.5 historical rate: unavailable"
-          ]
-        },
-        "over_2_5": {
-          "market": "over_2_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-2.5 historical rate: unavailable"
-          ]
-        },
-        "home_over": {
-          "market": "home_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home team expected goals estimate: 0.00"
-          ]
-        },
-        "away_over": {
-          "market": "away_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Away team expected goals estimate: 0.00"
-          ]
-        },
-        "home_win": {
-          "market": "home_win",
-          "confidence": 54.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home advantage applied",
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: home 0 out, opponent 0 out"
-          ]
-        },
-        "away_win": {
-          "market": "away_win",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: away 0 out, opponent 0 out"
-          ]
-        }
-      }
-    },
-    {
-      "fixture_id": 1584898,
-      "league_id": 667,
-      "league_name": "Friendlies Clubs",
-      "country": "World",
-      "season": 2026,
-      "kickoff_utc": "2026-07-18T08:00:00+00:00",
-      "kickoff_wat": "2026-07-18T09:00:00+01:00",
-      "session": "morning",
-      "home_team": {
-        "id": 2616,
-        "name": "CSM Ramnicu Valcea"
-      },
-      "away_team": {
-        "id": 7466,
-        "name": "CSA Steaua Bucure\u015fti"
-      },
-      "stats": {
-        "home": {},
-        "away": {}
-      },
-      "standings": {
-        "home": {},
-        "away": {}
-      },
-      "h2h": [],
-      "injuries": {
-        "home": [],
-        "away": []
-      },
-      "predictions": {
-        "over_1_5": {
-          "market": "over_1_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-1.5 historical rate: unavailable"
-          ]
-        },
-        "over_2_5": {
-          "market": "over_2_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-2.5 historical rate: unavailable"
-          ]
-        },
-        "home_over": {
-          "market": "home_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home team expected goals estimate: 0.00"
-          ]
-        },
-        "away_over": {
-          "market": "away_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Away team expected goals estimate: 0.00"
-          ]
-        },
-        "home_win": {
-          "market": "home_win",
-          "confidence": 54.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home advantage applied",
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: home 0 out, opponent 0 out"
-          ]
-        },
-        "away_win": {
-          "market": "away_win",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: away 0 out, opponent 0 out"
-          ]
-        }
-      }
-    },
-    {
-      "fixture_id": 1591877,
-      "league_id": 667,
-      "league_name": "Friendlies Clubs",
-      "country": "World",
-      "season": 2026,
-      "kickoff_utc": "2026-07-18T08:00:00+00:00",
-      "kickoff_wat": "2026-07-18T09:00:00+01:00",
-      "session": "morning",
-      "home_team": {
-        "id": 7350,
-        "name": "Sokol Hostou\u0148"
-      },
-      "away_team": {
-        "id": 7356,
-        "name": "Sokol Z\u00e1py"
-      },
-      "stats": {
-        "home": {},
-        "away": {}
-      },
-      "standings": {
-        "home": {},
-        "away": {}
-      },
-      "h2h": [],
-      "injuries": {
-        "home": [],
-        "away": []
-      },
-      "predictions": {
-        "over_1_5": {
-          "market": "over_1_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-1.5 historical rate: unavailable"
-          ]
-        },
-        "over_2_5": {
-          "market": "over_2_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-2.5 historical rate: unavailable"
-          ]
-        },
-        "home_over": {
-          "market": "home_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home team expected goals estimate: 0.00"
-          ]
-        },
-        "away_over": {
-          "market": "away_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Away team expected goals estimate: 0.00"
-          ]
-        },
-        "home_win": {
-          "market": "home_win",
-          "confidence": 54.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home advantage applied",
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: home 0 out, opponent 0 out"
-          ]
-        },
-        "away_win": {
-          "market": "away_win",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: away 0 out, opponent 0 out"
-          ]
-        }
-      }
-    },
-    {
-      "fixture_id": 1560706,
-      "league_id": 667,
-      "league_name": "Friendlies Clubs",
-      "country": "World",
-      "season": 2026,
-      "kickoff_utc": "2026-07-18T08:30:00+00:00",
-      "kickoff_wat": "2026-07-18T09:30:00+01:00",
-      "session": "morning",
-      "home_team": {
-        "id": 19668,
-        "name": "Essingen"
-      },
-      "away_team": {
-        "id": 1327,
-        "name": "VfR Aalen"
-      },
-      "stats": {
-        "home": {},
-        "away": {}
-      },
-      "standings": {
-        "home": {},
-        "away": {}
-      },
-      "h2h": [],
-      "injuries": {
-        "home": [],
-        "away": []
-      },
-      "predictions": {
-        "over_1_5": {
-          "market": "over_1_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-1.5 historical rate: unavailable"
-          ]
-        },
-        "over_2_5": {
-          "market": "over_2_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-2.5 historical rate: unavailable"
-          ]
-        },
-        "home_over": {
-          "market": "home_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home team expected goals estimate: 0.00"
-          ]
-        },
-        "away_over": {
-          "market": "away_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Away team expected goals estimate: 0.00"
-          ]
-        },
-        "home_win": {
-          "market": "home_win",
-          "confidence": 54.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home advantage applied",
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: home 0 out, opponent 0 out"
-          ]
-        },
-        "away_win": {
-          "market": "away_win",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: away 0 out, opponent 0 out"
-          ]
-        }
-      }
-    },
-    {
-      "fixture_id": 1560741,
-      "league_id": 667,
-      "league_name": "Friendlies Clubs",
-      "country": "World",
-      "season": 2026,
-      "kickoff_utc": "2026-07-18T08:30:00+00:00",
-      "kickoff_wat": "2026-07-18T09:30:00+01:00",
-      "session": "morning",
-      "home_team": {
-        "id": 3548,
-        "name": "Podbrezov\u00e1"
-      },
-      "away_team": {
-        "id": 10536,
-        "name": "Liptovsk\u00fd Mikul\u00e1\u0161"
-      },
-      "stats": {
-        "home": {},
-        "away": {}
-      },
-      "standings": {
-        "home": {},
-        "away": {}
-      },
-      "h2h": [],
-      "injuries": {
-        "home": [],
-        "away": []
-      },
-      "predictions": {
-        "over_1_5": {
-          "market": "over_1_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-1.5 historical rate: unavailable"
-          ]
-        },
-        "over_2_5": {
-          "market": "over_2_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-2.5 historical rate: unavailable"
-          ]
-        },
-        "home_over": {
-          "market": "home_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home team expected goals estimate: 0.00"
-          ]
-        },
-        "away_over": {
-          "market": "away_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Away team expected goals estimate: 0.00"
-          ]
-        },
-        "home_win": {
-          "market": "home_win",
-          "confidence": 54.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home advantage applied",
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: home 0 out, opponent 0 out"
-          ]
-        },
-        "away_win": {
-          "market": "away_win",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: away 0 out, opponent 0 out"
-          ]
-        }
-      }
-    },
-    {
-      "fixture_id": 1567669,
-      "league_id": 667,
-      "league_name": "Friendlies Clubs",
-      "country": "World",
-      "season": 2026,
-      "kickoff_utc": "2026-07-18T08:30:00+00:00",
-      "kickoff_wat": "2026-07-18T09:30:00+01:00",
-      "session": "morning",
-      "home_team": {
-        "id": 3630,
-        "name": "Obolon'-Brovar"
-      },
-      "away_team": {
-        "id": 24585,
-        "name": "Kolos Kovalivka II"
+        "id": 7087,
+        "name": "Hwaseong"
       },
       "stats": {
         "home": {},
@@ -1263,7 +813,7 @@
     }
   ],
   "partial_coverage": true,
-  "coverage_note": "365 fixtures matched the whitelist and session window, but only the 29 earliest kickoffs were processed to stay within the daily API request budget. API request budget ran out mid-session; 15 fixture(s) were left without full stats and are excluded from this session's output.",
+  "coverage_note": "52 fixtures matched the whitelist and session window, but only the 29 earliest kickoffs were processed to stay within the daily API request budget. API request budget ran out mid-session; 20 fixture(s) were left without full stats and are excluded from this session's output.",
   "session": "morning",
-  "generated_at_wat": "2026-07-18T08:59:05.086837+01:00"
+  "generated_at_wat": "2026-07-19T06:33:50.013361+01:00"
 }

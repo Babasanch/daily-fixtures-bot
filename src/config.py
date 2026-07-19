@@ -12,8 +12,8 @@ from datetime import timezone, timedelta
 WAT = timezone(timedelta(hours=1))  # West Africa Time, fixed UTC+1, no DST
 
 # Session windows, in WAT, as (start_hour, end_hour). Evening wraps past midnight.
-MORNING_SESSION = (7, 18)    # 07:00 - 18:00 WAT
-EVENING_SESSION = (19, 4)    # 19:00 - 04:00 WAT (wraps to next day)
+MORNING_SESSION = (0, 12)    # 00:00 - 11:59 WAT
+EVENING_SESSION = (12, 24)   # 12:00 - 23:59 WAT
 
 # ---------------------------------------------------------------------------
 # API-Football (api-sports.io / RapidAPI)

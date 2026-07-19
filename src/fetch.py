@@ -34,13 +34,19 @@ from .rules_engine import score_all_fixtures
 
 
 def _is_in_session(kickoff_wat: datetime, session: str) -> bool:
+    """
+    Generic hour-range check that correctly handles both:
+      - non-wrapping windows (start < end, e.g. 0-12), and
+      - wrapping windows that cross midnight (start > end, e.g. 19-4)
+    so config.py can define either shape of session window without this
+    function needing to assume which one applies to morning vs evening.
+    """
     hour = kickoff_wat.hour
-    if session == "morning":
-        start_h, end_h = config.MORNING_SESSION
+    start_h, end_h = config.MORNING_SESSION if session == "morning" else config.EVENING_SESSION
+    if start_h <= end_h:
         return start_h <= hour < end_h
     else:
-        start_h, end_h = config.EVENING_SESSION
-        return hour >= start_h or hour < end_h
+        return hour >= start_h or hour < end_h  # wraps past midnight
 
 
 def _build_league_lookup() -> Dict[int, Dict[str, Any]]:

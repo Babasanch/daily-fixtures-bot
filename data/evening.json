@@ -2,21 +2,21 @@
   "target_date": "2026-07-19",
   "fixtures": [
     {
-      "fixture_id": 1519408,
-      "league_id": 242,
-      "league_name": "Liga Pro",
-      "country": "Ecuador",
+      "fixture_id": 1497628,
+      "league_id": 114,
+      "league_name": "Superettan",
+      "country": "Sweden",
       "season": 2026,
-      "kickoff_utc": "2026-07-19T00:00:00+00:00",
-      "kickoff_wat": "2026-07-19T01:00:00+01:00",
+      "kickoff_utc": "2026-07-19T11:00:00+00:00",
+      "kickoff_wat": "2026-07-19T12:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 1152,
-        "name": "Barcelona SC"
+        "id": 378,
+        "name": "IFK Norrkoping"
       },
       "away_team": {
-        "id": 18762,
-        "name": "Libertad"
+        "id": 6697,
+        "name": "Sandviken"
       },
       "stats": {
         "home": {},
@@ -92,21 +92,21 @@
       }
     },
     {
-      "fixture_id": 1493578,
-      "league_id": 255,
-      "league_name": "USL Championship",
-      "country": "USA",
+      "fixture_id": 1560752,
+      "league_id": 667,
+      "league_name": "Friendlies Clubs",
+      "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-19T00:30:00+00:00",
-      "kickoff_wat": "2026-07-19T01:30:00+01:00",
+      "kickoff_utc": "2026-07-19T11:00:00+00:00",
+      "kickoff_wat": "2026-07-19T12:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 4022,
-        "name": "FC Tulsa"
+        "id": 2066,
+        "name": "Naestved"
       },
       "away_team": {
-        "id": 3993,
-        "name": "El Paso Locomotive"
+        "id": 2062,
+        "name": "FC Helsingor"
       },
       "stats": {
         "home": {},
@@ -182,21 +182,21 @@
       }
     },
     {
-      "fixture_id": 1493583,
-      "league_id": 255,
-      "league_name": "USL Championship",
-      "country": "USA",
+      "fixture_id": 1546700,
+      "league_id": 667,
+      "league_name": "Friendlies Clubs",
+      "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-19T01:00:00+00:00",
-      "kickoff_wat": "2026-07-19T02:00:00+01:00",
+      "kickoff_utc": "2026-07-19T12:00:00+00:00",
+      "kickoff_wat": "2026-07-19T13:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 4017,
-        "name": "San Antonio"
+        "id": 190,
+        "name": "Erzgebirge Aue"
       },
       "away_team": {
-        "id": 3998,
-        "name": "Las Vegas Lights"
+        "id": 174,
+        "name": "FC Schalke 04"
       },
       "stats": {
         "home": {},
@@ -272,21 +272,21 @@
       }
     },
     {
-      "fixture_id": 1550901,
-      "league_id": 262,
-      "league_name": "Liga MX",
-      "country": "Mexico",
+      "fixture_id": 1546701,
+      "league_id": 667,
+      "league_name": "Friendlies Clubs",
+      "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-19T01:05:00+00:00",
-      "kickoff_wat": "2026-07-19T02:05:00+01:00",
+      "kickoff_utc": "2026-07-19T12:00:00+00:00",
+      "kickoff_wat": "2026-07-19T13:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 2282,
-        "name": "Monterrey"
+        "id": 4255,
+        "name": "Dornbirn"
       },
       "away_team": {
-        "id": 2285,
-        "name": "Santos Laguna"
+        "id": 618,
+        "name": "SCR Altach"
       },
       "stats": {
         "home": {},
@@ -362,21 +362,21 @@
       }
     },
     {
-      "fixture_id": 1550900,
-      "league_id": 262,
-      "league_name": "Liga MX",
-      "country": "Mexico",
+      "fixture_id": 1548006,
+      "league_id": 667,
+      "league_name": "Friendlies Clubs",
+      "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-19T01:07:00+00:00",
-      "kickoff_wat": "2026-07-19T02:07:00+01:00",
+      "kickoff_utc": "2026-07-19T12:00:00+00:00",
+      "kickoff_wat": "2026-07-19T13:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 2278,
-        "name": "Guadalajara Chivas"
+        "id": 6961,
+        "name": "Unia Skierniewice"
       },
       "away_team": {
-        "id": 2281,
-        "name": "Toluca"
+        "id": 6962,
+        "name": "Widzew \u0141\u00f3d\u017a"
       },
       "stats": {
         "home": {},
@@ -452,21 +452,21 @@
       }
     },
     {
-      "fixture_id": 1493580,
-      "league_id": 255,
-      "league_name": "USL Championship",
-      "country": "USA",
+      "fixture_id": 1567688,
+      "league_id": 667,
+      "league_name": "Friendlies Clubs",
+      "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-19T02:30:00+00:00",
-      "kickoff_wat": "2026-07-19T03:30:00+01:00",
+      "kickoff_utc": "2026-07-19T12:00:00+00:00",
+      "kickoff_wat": "2026-07-19T13:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 4009,
-        "name": "Phoenix Rising"
+        "id": 12742,
+        "name": "Borussia Hildesheim"
       },
       "away_team": {
-        "id": 18375,
-        "name": "Monterey Bay"
+        "id": 12783,
+        "name": "Hemelingen"
       },
       "stats": {
         "home": {},
@@ -543,7 +543,7 @@
     }
   ],
   "partial_coverage": true,
-  "coverage_note": "API request budget ran out mid-session; 6 fixture(s) were left without full stats and are excluded from this session's output.",
+  "coverage_note": "50 fixtures matched the whitelist and session window, but only the 14 earliest kickoffs were processed to stay within the daily API request budget. API request budget ran out mid-session; 8 fixture(s) were left without full stats and are excluded from this session's output.",
   "session": "evening",
-  "generated_at_wat": "2026-07-19T18:30:20.270213+01:00"
+  "generated_at_wat": "2026-07-19T22:27:12.701891+01:00"
 }

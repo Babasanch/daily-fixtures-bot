@@ -90,9 +90,9 @@ def _format_pick_list(picks: List[Dict[str, Any]], title: str, show_market: bool
     if not picks:
         return (
             f"*{title}*\n\n"
-            f"No fixtures met the {config.CONFIDENCE_THRESHOLD}% confidence "
-            f"threshold for this market right now. Check back after the "
-            f"next scheduled update, or try a different session."
+            "No fixtures have been processed for this market yet. Check "
+            "back after the next scheduled update, or try a different "
+            "session."
         )
     lines = [f"*{title}*\n"]
     for i, pick in enumerate(picks, 1):
@@ -140,21 +140,21 @@ def cmd_start(chat_id: int, args: List[str]) -> None:
         "/banker — Safest selection (morning & evening)\n"
         "/acca5 — Build a 5-leg accumulator\n"
         "/single — Best single bet of the day (morning & evening)\n\n"
-        f"Picks shown on the strict commands are those scoring "
-        f"{config.CONFIDENCE_THRESHOLD}%+ on a transparent confidence model "
-        "— not a guarantee. /morning and /evening show everything "
-        "processed that session, regardless of score. Always bet "
-        "responsibly."
+        "Every command shows the bot's best-ranked pick(s), based on its "
+        "confidence model — always the strongest available, not filtered "
+        "by a fixed cutoff. Confidence is a transparent heuristic score, "
+        "not a guarantee. /morning and /evening show everything processed "
+        "that session. Always bet responsibly."
     )
     send_message(chat_id, text)
 
 
 def _format_fixture_browse_list(fixtures: List[Dict[str, Any]], title: str, limit: int = 20) -> str:
     """
-    Shows every fixture processed for a session (not threshold-gated),
-    ranked by each fixture's best market score, so you can see what data
-    the bot actually had to work with -- useful for sanity-checking
-    coverage on days when no picks clear the strict threshold.
+    Shows every fixture processed for a session, ranked by best market
+    score. Unlike the other commands (which each show a small number of
+    top picks), this lists everything the bot had data for -- useful for
+    seeing the full picture behind a given day's picks.
     """
     ranked = rank.rank_all_fixtures(fixtures)
     if not ranked:
@@ -224,10 +224,7 @@ def cmd_banker(chat_id: int, args: List[str]) -> None:
         if pick:
             lines.append(_format_pick_line(pick, show_market=True))
         else:
-            lines.append(
-                f"No fixture met the {config.CONFIDENCE_THRESHOLD}% "
-                "threshold in this session."
-            )
+            lines.append("No fixtures processed for this session yet.")
     text = "\n\n".join(lines) + _coverage_warning()
     send_message(chat_id, text)
 
@@ -241,10 +238,7 @@ def cmd_single(chat_id: int, args: List[str]) -> None:
         if pick:
             lines.append(_format_pick_line(pick, show_market=True))
         else:
-            lines.append(
-                f"No fixture met the {config.CONFIDENCE_THRESHOLD}% "
-                "threshold in this session."
-            )
+            lines.append("No fixtures processed for this session yet.")
     text = "\n\n".join(lines) + _coverage_warning()
     send_message(chat_id, text)
 
@@ -256,8 +250,8 @@ def cmd_acca5(chat_id: int, args: List[str]) -> None:
     lines = ["*🎯 5-Leg Accumulator*\n"]
     if not result["legs"]:
         lines.append(
-            f"No fixtures met the {config.CONFIDENCE_THRESHOLD}% threshold "
-            "today — can't build an accumulator right now."
+            "No fixtures have been processed yet — can't build an "
+            "accumulator right now."
         )
     else:
         for i, leg in enumerate(result["legs"], 1):

@@ -35,19 +35,17 @@ def top_picks_for_market(
     fixtures: List[Dict[str, Any]],
     market: str,
     limit: int = 10,
-    min_confidence: Optional[float] = None,
 ) -> List[Dict[str, Any]]:
     """
-    Returns fixtures ranked strongest-to-weakest for a given market.
-    min_confidence defaults to config.CONFIDENCE_THRESHOLD (80). Pass 0 to
-    see all fixtures regardless of threshold (used internally, not exposed
-    directly as a command).
+    Returns the top `limit` fixtures ranked strongest-to-weakest for a given
+    market, with no confidence-score cutoff -- always returns the best
+    available picks, however strong or weak they are, as long as at least
+    one fixture with a prediction for this market exists.
     """
-    threshold = config.CONFIDENCE_THRESHOLD if min_confidence is None else min_confidence
     candidates = [
         _fixture_summary(f, market)
         for f in fixtures
-        if market in f.get("predictions", {}) and f["predictions"][market]["confidence"] >= threshold
+        if market in f.get("predictions", {})
     ]
     candidates.sort(key=lambda x: x["confidence"], reverse=True)
     return candidates[:limit]
@@ -101,15 +99,14 @@ def over_2_5_picks(fixtures: List[Dict[str, Any]], limit: int = 10) -> List[Dict
 
 def banker_pick(fixtures: List[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
     """
-    The single safest selection across ALL markets for the session --
-    i.e. the highest confidence score found anywhere, regardless of market.
-    Returns None if nothing meets the confidence threshold.
+    The single highest-confidence selection across ALL markets for the
+    session, with no cutoff -- always returns the best pick available, even
+    if its confidence is moderate. Returns None only if there are no scored
+    fixtures at all (e.g. session hasn't been fetched yet).
     """
     best: Optional[Dict[str, Any]] = None
     for f in fixtures:
         for market, pred in f.get("predictions", {}).items():
-            if pred["confidence"] < config.CONFIDENCE_THRESHOLD:
-                continue
             if best is None or pred["confidence"] > best["confidence"]:
                 best = _fixture_summary(f, market)
     return best
@@ -131,8 +128,10 @@ def build_accumulator(
     legs: int = 5,
 ) -> Dict[str, Any]:
     """
-    Builds an N-leg accumulator from the highest-confidence, non-duplicate
-    fixtures across all markets. Each leg comes from a DIFFERENT fixture
+    Builds an N-leg accumulator from the highest-ranked, non-duplicate
+    fixtures across all markets, with no confidence-score cutoff -- always
+    fills all `legs` slots as long as enough distinct fixtures were
+    processed for the session. Each leg comes from a DIFFERENT fixture
     (you can't stack two markets from the same match into one acca here --
     keeps it simple and avoids correlated-outcome legs).
 
@@ -142,8 +141,6 @@ def build_accumulator(
     """
     # Best market per fixture, then take the strongest fixtures overall.
     candidates = rank_all_fixtures(fixtures)
-    candidates = [c for c in candidates if c["confidence"] >= config.CONFIDENCE_THRESHOLD]
-
     selected = candidates[:legs]
 
     if len(selected) < legs:
@@ -153,10 +150,10 @@ def build_accumulator(
             "achieved_legs": len(selected),
             "combined_confidence": None,
             "note": (
-                f"Only {len(selected)} fixture(s) met the "
-                f"{config.CONFIDENCE_THRESHOLD}% confidence threshold today "
-                f"-- not enough for a full {legs}-leg accumulator. Showing "
-                f"what qualified instead of padding with weaker picks."
+                f"Only {len(selected)} distinct fixture(s) were available "
+                f"this session -- not enough for a full {legs}-leg "
+                f"accumulator yet. Showing what's available instead of "
+                f"padding with duplicates."
             ),
         }
 

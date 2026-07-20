@@ -1,22 +1,22 @@
 {
-  "target_date": "2026-07-20",
+  "target_date": "2026-07-21",
   "fixtures": [
     {
-      "fixture_id": 1519412,
-      "league_id": 242,
-      "league_name": "Liga Pro",
-      "country": "Ecuador",
+      "fixture_id": 1498655,
+      "league_id": 129,
+      "league_name": "Primera Nacional",
+      "country": "Argentina",
       "season": 2026,
-      "kickoff_utc": "2026-07-20T00:15:00+00:00",
-      "kickoff_wat": "2026-07-20T01:15:00+01:00",
+      "kickoff_utc": "2026-07-21T00:00:00+00:00",
+      "kickoff_wat": "2026-07-21T01:00:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 1153,
-        "name": "Independiente del Valle"
+        "id": 1946,
+        "name": "Chaco For Ever"
       },
       "away_team": {
-        "id": 1148,
-        "name": "Emelec"
+        "id": 8379,
+        "name": "San Miguel"
       },
       "stats": {
         "home": {},
@@ -92,21 +92,21 @@
       }
     },
     {
-      "fixture_id": 1498657,
+      "fixture_id": 1498653,
       "league_id": 129,
       "league_name": "Primera Nacional",
       "country": "Argentina",
       "season": 2026,
-      "kickoff_utc": "2026-07-20T23:00:00+00:00",
-      "kickoff_wat": "2026-07-21T00:00:00+01:00",
+      "kickoff_utc": "2026-07-21T00:30:00+00:00",
+      "kickoff_wat": "2026-07-21T01:30:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 8377,
-        "name": "Colegiales"
+        "id": 1951,
+        "name": "Central Norte"
       },
       "away_team": {
-        "id": 1963,
-        "name": "Midland"
+        "id": 469,
+        "name": "Deportivo Moron"
       },
       "stats": {
         "home": {},
@@ -182,201 +182,21 @@
       }
     },
     {
-      "fixture_id": 1498663,
-      "league_id": 129,
-      "league_name": "Primera Nacional",
-      "country": "Argentina",
+      "fixture_id": 1591889,
+      "league_id": 667,
+      "league_name": "Friendlies Clubs",
+      "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-20T23:00:00+00:00",
-      "kickoff_wat": "2026-07-21T00:00:00+01:00",
+      "kickoff_utc": "2026-07-21T04:00:00+00:00",
+      "kickoff_wat": "2026-07-21T05:00:00+01:00",
       "session": "morning",
       "home_team": {
-        "id": 444,
-        "name": "Patronato"
+        "id": 292,
+        "name": "FC Tokyo"
       },
       "away_team": {
-        "id": 1948,
-        "name": "Atlanta"
-      },
-      "stats": {
-        "home": {},
-        "away": {}
-      },
-      "standings": {
-        "home": {},
-        "away": {}
-      },
-      "h2h": [],
-      "injuries": {
-        "home": null,
-        "away": null
-      },
-      "predictions": {
-        "over_1_5": {
-          "market": "over_1_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-1.5 historical rate: unavailable"
-          ]
-        },
-        "over_2_5": {
-          "market": "over_2_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-2.5 historical rate: unavailable"
-          ]
-        },
-        "home_over": {
-          "market": "home_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home team expected goals estimate: 0.00"
-          ]
-        },
-        "away_over": {
-          "market": "away_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Away team expected goals estimate: 0.00"
-          ]
-        },
-        "home_win": {
-          "market": "home_win",
-          "confidence": 54.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home advantage applied",
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injury/suspension data unavailable"
-          ]
-        },
-        "away_win": {
-          "market": "away_win",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injury/suspension data unavailable"
-          ]
-        }
-      }
-    },
-    {
-      "fixture_id": 1498664,
-      "league_id": 129,
-      "league_name": "Primera Nacional",
-      "country": "Argentina",
-      "season": 2026,
-      "kickoff_utc": "2026-07-20T23:00:00+00:00",
-      "kickoff_wat": "2026-07-21T00:00:00+01:00",
-      "session": "morning",
-      "home_team": {
-        "id": 480,
-        "name": "Quilmes"
-      },
-      "away_team": {
-        "id": 479,
-        "name": "Gimnasia Jujuy"
-      },
-      "stats": {
-        "home": {},
-        "away": {}
-      },
-      "standings": {
-        "home": {},
-        "away": {}
-      },
-      "h2h": [],
-      "injuries": {
-        "home": [],
-        "away": []
-      },
-      "predictions": {
-        "over_1_5": {
-          "market": "over_1_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-1.5 historical rate: unavailable"
-          ]
-        },
-        "over_2_5": {
-          "market": "over_2_5",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Combined expected goals estimate: 0.00",
-            "Team over-2.5 historical rate: unavailable"
-          ]
-        },
-        "home_over": {
-          "market": "home_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home team expected goals estimate: 0.00"
-          ]
-        },
-        "away_over": {
-          "market": "away_over",
-          "confidence": 25.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Away team expected goals estimate: 0.00"
-          ]
-        },
-        "home_win": {
-          "market": "home_win",
-          "confidence": 54.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "Home advantage applied",
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: home 0 out, opponent 0 out"
-          ]
-        },
-        "away_win": {
-          "market": "away_win",
-          "confidence": 50.0,
-          "meets_threshold": false,
-          "reasoning": [
-            "League position data unavailable for one or both teams",
-            "Goal-difference-per-game gap: +0.00",
-            "Head-to-head history unavailable",
-            "Injuries/suspensions: away 0 out, opponent 0 out"
-          ]
-        }
-      }
-    },
-    {
-      "fixture_id": 1576802,
-      "league_id": 268,
-      "league_name": "Primera Divisi\u00f3n - Apertura",
-      "country": "Uruguay",
-      "season": 2026,
-      "kickoff_utc": "2026-07-20T23:00:00+00:00",
-      "kickoff_wat": "2026-07-21T00:00:00+01:00",
-      "session": "morning",
-      "home_team": {
-        "id": 2350,
-        "name": "Defensor Sporting"
-      },
-      "away_team": {
-        "id": 2358,
-        "name": "Liverpool Montevideo"
+        "id": 288,
+        "name": "Nagoya Grampus"
       },
       "stats": {
         "home": {},
@@ -455,5 +275,5 @@
   "partial_coverage": false,
   "coverage_note": null,
   "session": "morning",
-  "generated_at_wat": "2026-07-20T00:05:15.401969+01:00"
+  "generated_at_wat": "2026-07-21T00:05:24.193021+01:00"
 }

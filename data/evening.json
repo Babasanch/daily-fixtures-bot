@@ -270,10 +270,460 @@
           ]
         }
       }
+    },
+    {
+      "fixture_id": 1560761,
+      "league_id": 667,
+      "league_name": "Friendlies Clubs",
+      "country": "World",
+      "season": 2026,
+      "kickoff_utc": "2026-07-21T12:00:00+00:00",
+      "kickoff_wat": "2026-07-21T13:00:00+01:00",
+      "session": "evening",
+      "home_team": {
+        "id": 72,
+        "name": "QPR"
+      },
+      "away_team": {
+        "id": 1358,
+        "name": "Wycombe"
+      },
+      "stats": {
+        "home": {},
+        "away": {}
+      },
+      "standings": {
+        "home": {},
+        "away": {}
+      },
+      "h2h": [],
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "predictions": {
+        "over_1_5": {
+          "market": "over_1_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-1.5 historical rate: unavailable"
+          ]
+        },
+        "over_2_5": {
+          "market": "over_2_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-2.5 historical rate: unavailable"
+          ]
+        },
+        "home_over": {
+          "market": "home_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home team expected goals estimate: 0.00"
+          ]
+        },
+        "away_over": {
+          "market": "away_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Away team expected goals estimate: 0.00"
+          ]
+        },
+        "home_win": {
+          "market": "home_win",
+          "confidence": 54.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home advantage applied",
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: home 0 out, opponent 0 out"
+          ]
+        },
+        "away_win": {
+          "market": "away_win",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: away 0 out, opponent 0 out"
+          ]
+        }
+      }
+    },
+    {
+      "fixture_id": 1560762,
+      "league_id": 667,
+      "league_name": "Friendlies Clubs",
+      "country": "World",
+      "season": 2026,
+      "kickoff_utc": "2026-07-21T12:00:00+00:00",
+      "kickoff_wat": "2026-07-21T13:00:00+01:00",
+      "session": "evening",
+      "home_team": {
+        "id": 1620,
+        "name": "FC Viktoria K\u00f6ln"
+      },
+      "away_team": {
+        "id": 204,
+        "name": "VVV Venlo"
+      },
+      "stats": {
+        "home": {},
+        "away": {}
+      },
+      "standings": {
+        "home": {},
+        "away": {}
+      },
+      "h2h": [],
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "predictions": {
+        "over_1_5": {
+          "market": "over_1_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-1.5 historical rate: unavailable"
+          ]
+        },
+        "over_2_5": {
+          "market": "over_2_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-2.5 historical rate: unavailable"
+          ]
+        },
+        "home_over": {
+          "market": "home_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home team expected goals estimate: 0.00"
+          ]
+        },
+        "away_over": {
+          "market": "away_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Away team expected goals estimate: 0.00"
+          ]
+        },
+        "home_win": {
+          "market": "home_win",
+          "confidence": 54.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home advantage applied",
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: home 0 out, opponent 0 out"
+          ]
+        },
+        "away_win": {
+          "market": "away_win",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: away 0 out, opponent 0 out"
+          ]
+        }
+      }
+    },
+    {
+      "fixture_id": 1583396,
+      "league_id": 667,
+      "league_name": "Friendlies Clubs",
+      "country": "World",
+      "season": 2026,
+      "kickoff_utc": "2026-07-21T12:00:00+00:00",
+      "kickoff_wat": "2026-07-21T13:00:00+01:00",
+      "session": "evening",
+      "home_team": {
+        "id": 17403,
+        "name": "Czarni Po\u0142aniec"
+      },
+      "away_team": {
+        "id": 6186,
+        "name": "Maccabi Bnei Raina"
+      },
+      "stats": {
+        "home": {},
+        "away": {}
+      },
+      "standings": {
+        "home": {},
+        "away": {}
+      },
+      "h2h": [],
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "predictions": {
+        "over_1_5": {
+          "market": "over_1_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-1.5 historical rate: unavailable"
+          ]
+        },
+        "over_2_5": {
+          "market": "over_2_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-2.5 historical rate: unavailable"
+          ]
+        },
+        "home_over": {
+          "market": "home_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home team expected goals estimate: 0.00"
+          ]
+        },
+        "away_over": {
+          "market": "away_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Away team expected goals estimate: 0.00"
+          ]
+        },
+        "home_win": {
+          "market": "home_win",
+          "confidence": 54.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home advantage applied",
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: home 0 out, opponent 0 out"
+          ]
+        },
+        "away_win": {
+          "market": "away_win",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: away 0 out, opponent 0 out"
+          ]
+        }
+      }
+    },
+    {
+      "fixture_id": 1589289,
+      "league_id": 667,
+      "league_name": "Friendlies Clubs",
+      "country": "World",
+      "season": 2026,
+      "kickoff_utc": "2026-07-21T12:00:00+00:00",
+      "kickoff_wat": "2026-07-21T13:00:00+01:00",
+      "session": "evening",
+      "home_team": {
+        "id": 15882,
+        "name": "Mamer"
+      },
+      "away_team": {
+        "id": 15866,
+        "name": "Green Boys"
+      },
+      "stats": {
+        "home": {},
+        "away": {}
+      },
+      "standings": {
+        "home": {},
+        "away": {}
+      },
+      "h2h": [],
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "predictions": {
+        "over_1_5": {
+          "market": "over_1_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-1.5 historical rate: unavailable"
+          ]
+        },
+        "over_2_5": {
+          "market": "over_2_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-2.5 historical rate: unavailable"
+          ]
+        },
+        "home_over": {
+          "market": "home_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home team expected goals estimate: 0.00"
+          ]
+        },
+        "away_over": {
+          "market": "away_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Away team expected goals estimate: 0.00"
+          ]
+        },
+        "home_win": {
+          "market": "home_win",
+          "confidence": 54.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home advantage applied",
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: home 0 out, opponent 0 out"
+          ]
+        },
+        "away_win": {
+          "market": "away_win",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: away 0 out, opponent 0 out"
+          ]
+        }
+      }
+    },
+    {
+      "fixture_id": 1548008,
+      "league_id": 667,
+      "league_name": "Friendlies Clubs",
+      "country": "World",
+      "season": 2026,
+      "kickoff_utc": "2026-07-21T13:00:00+00:00",
+      "kickoff_wat": "2026-07-21T14:00:00+01:00",
+      "session": "evening",
+      "home_team": {
+        "id": 7192,
+        "name": "Chelsea U21"
+      },
+      "away_team": {
+        "id": 20016,
+        "name": "Cardiff City U21"
+      },
+      "stats": {
+        "home": {},
+        "away": {}
+      },
+      "standings": {
+        "home": {},
+        "away": {}
+      },
+      "h2h": [],
+      "injuries": {
+        "home": [],
+        "away": []
+      },
+      "predictions": {
+        "over_1_5": {
+          "market": "over_1_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-1.5 historical rate: unavailable"
+          ]
+        },
+        "over_2_5": {
+          "market": "over_2_5",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Combined expected goals estimate: 0.00",
+            "Team over-2.5 historical rate: unavailable"
+          ]
+        },
+        "home_over": {
+          "market": "home_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home team expected goals estimate: 0.00"
+          ]
+        },
+        "away_over": {
+          "market": "away_over",
+          "confidence": 25.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Away team expected goals estimate: 0.00"
+          ]
+        },
+        "home_win": {
+          "market": "home_win",
+          "confidence": 54.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "Home advantage applied",
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: home 0 out, opponent 0 out"
+          ]
+        },
+        "away_win": {
+          "market": "away_win",
+          "confidence": 50.0,
+          "meets_threshold": false,
+          "reasoning": [
+            "League position data unavailable for one or both teams",
+            "Goal-difference-per-game gap: +0.00",
+            "Head-to-head history unavailable",
+            "Injuries/suspensions: away 0 out, opponent 0 out"
+          ]
+        }
+      }
     }
   ],
   "partial_coverage": true,
-  "coverage_note": "101 fixtures matched the whitelist and session window, but only the 14 earliest kickoffs were processed to stay within the daily API request budget. API request budget ran out mid-session; 11 fixture(s) were left without full stats and are excluded from this session's output.",
+  "coverage_note": "101 fixtures matched the whitelist and session window, but only the 14 earliest kickoffs were processed to stay within the daily API request budget. API request budget ran out mid-session; 6 fixture(s) were left without full stats and are excluded from this session's output.",
   "session": "evening",
-  "generated_at_wat": "2026-07-21T05:44:11.436264+01:00"
+  "generated_at_wat": "2026-07-21T06:39:23.836175+01:00"
 }

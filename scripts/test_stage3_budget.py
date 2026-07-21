@@ -3,6 +3,10 @@ Validates enrich_fixtures()'s budget-truncation behavior using a mock
 client that simulates running out of API budget partway through -- no real
 network calls, no real API key needed.
 
+Team stats now come from a local match_history dict (no API call at all),
+so these tests build that dict directly rather than mocking a team-scoped
+API response.
+
 Run with: python -m scripts.test_stage3_budget
 """
 import os
@@ -16,7 +20,7 @@ from src import config
 
 
 class MockClient:
-    """Simulates ApiFootballClient, exhausting budget after N calls."""
+    """Simulates ApiFootballClient, exhausting budget after N calls. No longer needs to mock team-scoped responses, since team stats now come from local match_history instead of any API call."""
     def __init__(self, budget):
         self.budget = budget
         self.calls_made = 0
@@ -25,16 +29,6 @@ class MockClient:
         if self.calls_made >= self.budget:
             raise BudgetExceededError("mock budget exhausted")
         self.calls_made += 1
-        if endpoint == "/teams/statistics":
-            return {
-                "form": "WWDLW", "fixtures": {"played": {"total": 10}},
-                "goals": {
-                    "for": {"average": {"total": "1.5", "home": "1.7", "away": "1.3"},
-                            "under_over": {"1.5": {"over": "6"}, "2.5": {"over": "4"}}},
-                    "against": {"average": {"total": "1.0", "home": "0.8", "away": "1.2"}},
-                },
-                "clean_sheet": {"total": 3}, "failed_to_score": {"total": 2},
-            }
         if endpoint == "/standings":
             return [{"league": {"standings": [[]]}}]
         if endpoint == "/fixtures/headtohead":
@@ -61,25 +55,45 @@ def make_fixture(fid, home_id, away_id):
     }
 
 
+def make_match_history_for_team(history, team_id):
+    """Seeds 3 finished matches for a team directly into a match_history dict."""
+    from src import storage
+    storage.record_finished_match(history, fixture_id=team_id * 100 + 1, league_id=39,
+                                   home_id=team_id, away_id=team_id + 5000,
+                                   home_goals=2, away_goals=1, date="2026-07-01T15:00:00+00:00")
+    storage.record_finished_match(history, fixture_id=team_id * 100 + 2, league_id=39,
+                                   home_id=team_id + 5001, away_id=team_id,
+                                   home_goals=0, away_goals=1, date="2026-07-05T15:00:00+00:00")
+    storage.record_finished_match(history, fixture_id=team_id * 100 + 3, league_id=39,
+                                   home_id=team_id, away_id=team_id + 5002,
+                                   home_goals=1, away_goals=1, date="2026-07-09T15:00:00+00:00")
+
+
 def test_full_budget_covers_all():
     from src.fetch import enrich_fixtures
 
-    # Use a temp data dir so this test doesn't pollute real cache files.
     with tempfile.TemporaryDirectory() as tmpdir:
         config.DATA_DIR = tmpdir
         import src.storage as storage
-        storage.TEAM_STATS_CACHE_FILE = os.path.join(tmpdir, "team_stats_cache.json")
         storage.STANDINGS_CACHE_FILE = os.path.join(tmpdir, "standings_cache.json")
 
         fixtures = [make_fixture(i, i * 10, i * 10 + 1) for i in range(3)]
-        client = MockClient(budget=100)  # plenty
-        enriched, partial, note = enrich_fixtures(client, fixtures, max_fixtures=None)
+
+        history = {}
+        for f in fixtures:
+            make_match_history_for_team(history, f["home_team"]["id"])
+            make_match_history_for_team(history, f["away_team"]["id"])
+
+        client = MockClient(budget=100)
+        enriched, partial, note = enrich_fixtures(client, fixtures, max_fixtures=None, match_history=history)
 
         assert len(enriched) == 3, f"Expected all 3 fixtures enriched, got {len(enriched)}"
         assert partial is False
         assert note is None
-        assert enriched[0]["stats"]["home"]["form"] == "WWDLW"
-        print("✅ enrich_fixtures: full budget processes all fixtures, stats populated correctly")
+        assert enriched[0]["stats"]["home"]["form"] == "WWD", (
+            f"Expected form 'WWD' from seeded history, got {enriched[0]['stats']['home'].get('form')}"
+        )
+        print("✅ enrich_fixtures: full budget processes all fixtures, stats populated from local history")
 
 
 def test_truncation_via_max_fixtures():
@@ -88,13 +102,11 @@ def test_truncation_via_max_fixtures():
     with tempfile.TemporaryDirectory() as tmpdir:
         config.DATA_DIR = tmpdir
         import src.storage as storage
-        storage.TEAM_STATS_CACHE_FILE = os.path.join(tmpdir, "team_stats_cache.json")
         storage.STANDINGS_CACHE_FILE = os.path.join(tmpdir, "standings_cache.json")
 
         fixtures = [make_fixture(i, i * 10, i * 10 + 1) for i in range(10)]
-        client = MockClient(budget=1000)  # budget itself is fine
-        # But we artificially cap max_fixtures to simulate proactive truncation
-        enriched, partial, note = enrich_fixtures(client, fixtures, max_fixtures=4)
+        client = MockClient(budget=1000)
+        enriched, partial, note = enrich_fixtures(client, fixtures, max_fixtures=4, match_history={})
 
         assert len(enriched) == 4, f"Expected 4 fixtures (truncated), got {len(enriched)}"
         assert partial is True
@@ -108,14 +120,16 @@ def test_mid_run_budget_exhaustion():
     with tempfile.TemporaryDirectory() as tmpdir:
         config.DATA_DIR = tmpdir
         import src.storage as storage
-        storage.TEAM_STATS_CACHE_FILE = os.path.join(tmpdir, "team_stats_cache.json")
         storage.STANDINGS_CACHE_FILE = os.path.join(tmpdir, "standings_cache.json")
 
         fixtures = [make_fixture(i, i * 10, i * 10 + 1) for i in range(5)]
-        # Each fixture costs ~4 calls (2 team stats + standings + h2h + injuries
-        # = 5 actually, minus caching effects). Give enough for ~1-2 fixtures.
+        # Team stats now cost 0 API calls (local history). Remaining cost per
+        # fixture is standings (cached after first, all fixtures share
+        # league_id=39) + h2h(1) + injuries(1) -- so budget=6 should still
+        # exhaust partway through 5 fixtures (1 standings + 5*2 = 11 calls
+        # needed in total).
         client = MockClient(budget=6)
-        enriched, partial, note = enrich_fixtures(client, fixtures, max_fixtures=None)
+        enriched, partial, note = enrich_fixtures(client, fixtures, max_fixtures=None, match_history={})
 
         assert len(enriched) < 5, f"Expected fewer than 5 fixtures due to budget exhaustion, got {len(enriched)}"
         assert partial is True

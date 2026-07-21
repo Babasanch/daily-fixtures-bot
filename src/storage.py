@@ -6,8 +6,8 @@ design (see project decision: keep it simple).
 """
 import json
 import os
-from datetime import datetime
-from typing import Any, Dict, Optional
+from datetime import datetime, timedelta
+from typing import Any, Dict, List, Optional
 
 from . import config
 
@@ -134,3 +134,64 @@ def get_cached_standings(cache: Dict[str, Any], league_id: int, season: int) -> 
 def set_cached_standings(cache: Dict[str, Any], league_id: int, season: int, standings: Dict[str, Any]) -> None:
     key = f"{league_id}:{season}"
     cache[key] = {"fetched_at": datetime.now(config.WAT).isoformat(), "standings": standings}
+
+
+# ---------------------------------------------------------------------------
+# Match history (our own accumulated database of finished results)
+# ---------------------------------------------------------------------------
+# API-Football's free tier blocks every team-scoped history query we've
+# tried (the `last` parameter, and `team`+`from`/`to` without a `season`,
+# and `season` itself for the current year). So instead of asking the API
+# for "team X's recent matches", each fetch run harvests yesterday's
+# finished scores from the plain /fixtures?date=X call (which works fine,
+# same as the main daily pull) and accumulates them here. Team form is then
+# computed from this local archive -- zero extra API calls needed per team.
+
+MATCH_HISTORY_FILE = os.path.join(config.DATA_DIR, "match_history.json")
+
+# Cap how many matches we keep per team to bound file size -- far more than
+# the ~10 we actually use for form, so trimming here is generous headroom.
+MAX_STORED_MATCHES_PER_TEAM = 40
+
+
+def load_match_history() -> Dict[str, Any]:
+    """Returns {fixture_id_str: {date, league_id, home_id, away_id, home_goals, away_goals}}"""
+    return _read_json(MATCH_HISTORY_FILE, default={})
+
+
+def save_match_history(history: Dict[str, Any]) -> None:
+    _write_json(MATCH_HISTORY_FILE, history)
+
+
+def record_finished_match(
+    history: Dict[str, Any], fixture_id: int, league_id: int,
+    home_id: int, away_id: int, home_goals: int, away_goals: int, date: str,
+) -> None:
+    """Idempotent -- keyed by fixture_id, so harvesting the same date twice (e.g. morning + evening run both pulling 'yesterday') just overwrites, never duplicates."""
+    history[str(fixture_id)] = {
+        "date": date, "league_id": league_id,
+        "home_id": home_id, "away_id": away_id,
+        "home_goals": home_goals, "away_goals": away_goals,
+    }
+
+
+def get_team_matches(history: Dict[str, Any], team_id: int, max_matches: int = 10) -> List[Dict[str, Any]]:
+    """
+    Returns this team's most recent finished matches, from-the-team's-
+    perspective (gf/ga/is_home), sorted oldest-to-newest, capped to
+    max_matches -- ready for direct use in stats derivation.
+    """
+    relevant = []
+    for record in history.values():
+        if record["home_id"] == team_id:
+            relevant.append({"gf": record["home_goals"], "ga": record["away_goals"], "is_home": True, "date": record["date"]})
+        elif record["away_id"] == team_id:
+            relevant.append({"gf": record["away_goals"], "ga": record["home_goals"], "is_home": False, "date": record["date"]})
+    relevant.sort(key=lambda m: m["date"])
+    return relevant[-max_matches:]
+
+
+def prune_match_history(history: Dict[str, Any], keep_days: int = 120) -> Dict[str, Any]:
+    """Drops match records older than keep_days, to stop the file growing forever."""
+    cutoff = (datetime.now(config.WAT) - timedelta(days=keep_days)).date().isoformat()
+    return {k: v for k, v in history.items() if v.get("date", "")[:10] >= cutoff}

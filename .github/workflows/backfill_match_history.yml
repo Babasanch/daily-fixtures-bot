@@ -1,0 +1,48 @@
+name: Backfill Match History
+
+# Manual-only. Run this once after deploying the local-history fix (and
+# optionally again later if you ever want to extend the archive further
+# back). Costs ~1 API call per day backfilled.
+on:
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'How many days back to backfill'
+        required: false
+        default: '30'
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run backfill
+        run: python -m scripts.backfill_match_history --days ${{ github.event.inputs.days }}
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          API_FOOTBALL_HOST: ${{ secrets.API_FOOTBALL_HOST }}
+
+      - name: Commit and push match history
+        run: |
+          git config user.name "football-bot-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/match_history.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: backfill match history"
+            git push
+          fi

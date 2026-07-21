@@ -114,50 +114,17 @@ def _filter_and_shape_fixtures(
     return shaped
 
 
-def _derive_team_stats_from_recent_fixtures(raw_fixtures: List[Dict[str, Any]], team_id: int, max_matches: int = 10) -> Dict[str, Any]:
+def _compute_stats_from_matches(matches: List[Dict[str, Any]]) -> Dict[str, Any]:
     """
-    Builds a TeamStatsBlock by computing directly from a team's recent match
-    results, rather than the /teams/statistics endpoint.
-
-    NOTE: this exists because API-Football's free tier restricts
-    /teams/statistics and /standings to older seasons (2022-2024 at time of
-    writing) and rejects the current season with a "Free plans do not have
-    access to this season" error. It ALSO rejects the `last` convenience
-    parameter on /fixtures with "Free plans do not have access to the Last
-    parameter" -- so callers must fetch via an explicit from/to date range
-    instead (see enrich_fixtures below) and this function caps the result
-    to the most recent `max_matches` completed games itself, since the API
-    call can no longer do that capping for us.
+    Core stats computation over already-normalized match records:
+    [{"gf": int, "ga": int, "is_home": bool, "date": str}, ...], oldest
+    first. Used both by the local-history path (primary, see
+    enrich_fixtures) and by _parse_raw_fixtures_to_matches below (kept for
+    tests / potential future direct-API use).
     """
-    matches = []
-    for item in raw_fixtures:
-        status = item.get("fixture", {}).get("status", {}).get("short")
-        if status != "FT":  # only count completed matches
-            continue
-        teams = item.get("teams", {})
-        goals = item.get("goals", {})
-        home = teams.get("home", {})
-        away = teams.get("away", {})
-
-        if home.get("id") == team_id:
-            gf, ga, is_home = goals.get("home"), goals.get("away"), True
-        elif away.get("id") == team_id:
-            gf, ga, is_home = goals.get("away"), goals.get("home"), False
-        else:
-            continue
-        if gf is None or ga is None:
-            continue
-
-        matches.append({
-            "gf": gf, "ga": ga, "is_home": is_home,
-            "date": item.get("fixture", {}).get("date", ""),
-        })
-
     if not matches:
         return {}
 
-    matches.sort(key=lambda m: m["date"])  # oldest first
-    matches = matches[-max_matches:]  # keep only the most recent N, now that the API can't do this for us
     played = len(matches)
 
     def _result(m):
@@ -189,6 +156,66 @@ def _derive_team_stats_from_recent_fixtures(raw_fixtures: List[Dict[str, Any]], 
         "over_1_5_rate": round(sum(1 for m in matches if (m["gf"] + m["ga"]) >= 2) / played, 3),
         "over_2_5_rate": round(sum(1 for m in matches if (m["gf"] + m["ga"]) >= 3) / played, 3),
     }
+
+
+def _parse_raw_fixtures_to_matches(raw_fixtures: List[Dict[str, Any]], team_id: int, max_matches: int = 10) -> List[Dict[str, Any]]:
+    """Normalizes a raw /fixtures API response into our match-record shape, from team_id's perspective."""
+    matches = []
+    for item in raw_fixtures:
+        status = item.get("fixture", {}).get("status", {}).get("short")
+        if status != "FT":
+            continue
+        teams = item.get("teams", {})
+        goals = item.get("goals", {})
+        home = teams.get("home", {})
+        away = teams.get("away", {})
+
+        if home.get("id") == team_id:
+            gf, ga, is_home = goals.get("home"), goals.get("away"), True
+        elif away.get("id") == team_id:
+            gf, ga, is_home = goals.get("away"), goals.get("home"), False
+        else:
+            continue
+        if gf is None or ga is None:
+            continue
+
+        matches.append({"gf": gf, "ga": ga, "is_home": is_home, "date": item.get("fixture", {}).get("date", "")})
+
+    matches.sort(key=lambda m: m["date"])
+    return matches[-max_matches:]
+
+
+def harvest_finished_matches(client: ApiFootballClient, league_lookup: Dict[int, Dict[str, Any]], date_str: str) -> List[Dict[str, Any]]:
+    """
+    Pulls one day's fixtures (a call we know isn't restricted -- it's the
+    same mechanism the main daily pull already relies on) and returns the
+    finished, whitelisted matches as normalized records ready for
+    storage.record_finished_match(). Costs exactly 1 API call, regardless
+    of how many matches that day had.
+    """
+    raw = client.get("/fixtures", params={"date": date_str})
+    results = []
+    for item in raw:
+        league_id = item.get("league", {}).get("id")
+        if league_id not in league_lookup:
+            continue
+        fixture_info = item.get("fixture", {})
+        if fixture_info.get("status", {}).get("short") != "FT":
+            continue
+        teams = item.get("teams", {})
+        goals = item.get("goals", {})
+        home_id = teams.get("home", {}).get("id")
+        away_id = teams.get("away", {}).get("id")
+        home_goals, away_goals = goals.get("home"), goals.get("away")
+        if None in (home_id, away_id, home_goals, away_goals, fixture_info.get("id")):
+            continue
+        results.append({
+            "fixture_id": fixture_info["id"], "league_id": league_id,
+            "home_id": home_id, "away_id": away_id,
+            "home_goals": home_goals, "away_goals": away_goals,
+            "date": fixture_info.get("date", date_str),
+        })
+    return results
 
 
 def _parse_standings(raw: List[Any]) -> Dict[int, Dict[str, Any]]:
@@ -246,23 +273,23 @@ def enrich_fixtures(
     client: ApiFootballClient,
     fixtures: List[Dict[str, Any]],
     max_fixtures: Optional[int] = None,
-    target_form_date: Optional[Any] = None,
+    match_history: Optional[Dict[str, Any]] = None,
 ) -> Tuple[List[Dict[str, Any]], bool, Optional[str]]:
     """
     Enriches the (already filtered) fixture list with team stats, standings,
     H2H, and injuries -- truncating by soonest-kickoff if the budget can't
     cover everything. Returns (enriched_fixtures, partial_coverage, note).
 
-    target_form_date: the date (a date object) to anchor the 90-day lookback
-    window for recent-form stats. Defaults to today (WAT) if not given --
-    pass the actual fetch target date explicitly when running for a
-    non-"today" date (e.g. via --date) so form data reflects matches before
-    that date, not the real current date.
+    Team stats now come entirely from the local match_history archive (see
+    storage.py) rather than any API call -- API-Football's free tier
+    rejects every team-scoped history query we've tried (`last`, and
+    `team`+`from`/`to` without `season`, and `season` itself for the
+    current year), so this sidesteps the restriction entirely and costs
+    zero API budget per team.
     """
-    if target_form_date is None:
-        target_form_date = datetime.now(config.WAT).date()
+    if match_history is None:
+        match_history = storage.load_match_history()
 
-    team_stats_cache = storage.load_team_stats_cache()
     standings_cache = storage.load_standings_cache()
 
     partial_coverage = False
@@ -287,27 +314,10 @@ def enrich_fixtures(
             league_id = fixture["league_id"]
             season = fixture["season"]
 
-            # --- Team statistics (derived from recent fixtures, cached by team) ---
+            # --- Team statistics: purely local, no API call, no budget cost ---
             for side, team_id in (("home", home_id), ("away", away_id)):
-                cached = storage.get_cached_team_stats(team_stats_cache, team_id)
-                if cached is not None:
-                    fixture["stats"][side] = cached
-                    continue
-                try:
-                    raw_recent = client.get("/fixtures", params={
-                        "team": team_id,
-                        "from": (target_form_date - timedelta(days=90)).isoformat(),
-                        "to": target_form_date.isoformat(),
-                        "status": "FT",
-                    })
-                    parsed = _derive_team_stats_from_recent_fixtures(raw_recent, team_id)
-                except BudgetExceededError:
-                    raise
-                except APIFootballError as exc:
-                    print(f"WARNING: team stats unavailable for team {team_id}: {exc}")
-                    parsed = {}
-                fixture["stats"][side] = parsed
-                storage.set_cached_team_stats(team_stats_cache, team_id, parsed)
+                recent_matches = storage.get_team_matches(match_history, team_id, max_matches=10)
+                fixture["stats"][side] = _compute_stats_from_matches(recent_matches)
 
             # --- Standings (cached, per league) ---
             # NOTE: on API-Football's free tier, /standings (like
@@ -373,7 +383,6 @@ def enrich_fixtures(
             )
             break
 
-    storage.save_team_stats_cache(team_stats_cache)
     storage.save_standings_cache(standings_cache)
 
     return enriched, partial_coverage, coverage_note
@@ -400,20 +409,41 @@ def run(session: str, target_date: Optional[datetime] = None) -> None:
 
     print(f"Raw fixtures for {date_str}: {len(raw_fixtures)}. {client.budget_summary()}")
 
+    # Harvest yesterday's finished results into our local match-history
+    # archive -- costs exactly 1 API call (same mechanism as the main daily
+    # pull, which we know isn't restricted), and is what team form now
+    # derives from instead of any blocked team-scoped API query. Idempotent
+    # if both morning and evening runs harvest the same date.
+    match_history = storage.load_match_history()
+    try:
+        yesterday_str = (target_date.date() - timedelta(days=1)).isoformat()
+        harvested = harvest_finished_matches(client, league_lookup, yesterday_str)
+        for m in harvested:
+            storage.record_finished_match(
+                match_history, m["fixture_id"], m["league_id"],
+                m["home_id"], m["away_id"], m["home_goals"], m["away_goals"], m["date"],
+            )
+        match_history = storage.prune_match_history(match_history)
+        storage.save_match_history(match_history)
+        print(f"Harvested {len(harvested)} finished matches from {yesterday_str} into local history "
+              f"({len(match_history)} total records archived). {client.budget_summary()}")
+    except BudgetExceededError as exc:
+        print(f"WARNING: could not harvest yesterday's results, budget exhausted: {exc}")
+
     shaped = _filter_and_shape_fixtures(raw_fixtures, league_lookup, session)
     print(f"Fixtures matching whitelist + {session} session window: {len(shaped)}")
 
-    # Reserve remaining run budget for enrichment: each fixture costs up to
-    # 5 calls in the worst case (2 uncached team stats + standings + h2h +
-    # injuries), but standings/team-stats are usually cache-warm after the
-    # first run of the day. Be conservative with the divisor.
+    # Reserve remaining run budget for enrichment: team stats are now free
+    # (purely local lookup), so each fixture only costs up to 3 calls in
+    # the worst case (standings + h2h + injuries), and standings are
+    # usually cache-warm after the first run of the day.
     remaining = client.calls_remaining_this_run
     max_fixtures = max(remaining // 2, 0) if remaining else 0
     if max_fixtures == 0:
         print("WARNING: no run budget remaining for enrichment; writing fixtures without stats.")
 
     enriched, partial, note = enrich_fixtures(
-        client, shaped, max_fixtures=max_fixtures or None, target_form_date=target_date.date(),
+        client, shaped, max_fixtures=max_fixtures or None, match_history=match_history,
     )
 
     scored = score_all_fixtures(enriched)

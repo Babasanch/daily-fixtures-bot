@@ -114,19 +114,20 @@ def _filter_and_shape_fixtures(
     return shaped
 
 
-def _derive_team_stats_from_recent_fixtures(raw_fixtures: List[Dict[str, Any]], team_id: int) -> Dict[str, Any]:
+def _derive_team_stats_from_recent_fixtures(raw_fixtures: List[Dict[str, Any]], team_id: int, max_matches: int = 10) -> Dict[str, Any]:
     """
     Builds a TeamStatsBlock by computing directly from a team's recent match
-    results (via /fixtures?team=X&last=N), rather than the /teams/statistics
-    endpoint.
+    results, rather than the /teams/statistics endpoint.
 
     NOTE: this exists because API-Football's free tier restricts
     /teams/statistics and /standings to older seasons (2022-2024 at time of
     writing) and rejects the current season with a "Free plans do not have
-    access to this season" error. /fixtures itself is NOT season-restricted
-    the same way (we already rely on it for today's fixture list), so
-    deriving form/goals stats from raw recent results sidesteps the
-    restriction entirely and arguably gives more current data anyway.
+    access to this season" error. It ALSO rejects the `last` convenience
+    parameter on /fixtures with "Free plans do not have access to the Last
+    parameter" -- so callers must fetch via an explicit from/to date range
+    instead (see enrich_fixtures below) and this function caps the result
+    to the most recent `max_matches` completed games itself, since the API
+    call can no longer do that capping for us.
     """
     matches = []
     for item in raw_fixtures:
@@ -155,7 +156,8 @@ def _derive_team_stats_from_recent_fixtures(raw_fixtures: List[Dict[str, Any]], 
     if not matches:
         return {}
 
-    matches.sort(key=lambda m: m["date"])  # oldest first, so form string ends with most recent
+    matches.sort(key=lambda m: m["date"])  # oldest first
+    matches = matches[-max_matches:]  # keep only the most recent N, now that the API can't do this for us
     played = len(matches)
 
     def _result(m):
@@ -244,12 +246,22 @@ def enrich_fixtures(
     client: ApiFootballClient,
     fixtures: List[Dict[str, Any]],
     max_fixtures: Optional[int] = None,
+    target_form_date: Optional[Any] = None,
 ) -> Tuple[List[Dict[str, Any]], bool, Optional[str]]:
     """
     Enriches the (already filtered) fixture list with team stats, standings,
     H2H, and injuries -- truncating by soonest-kickoff if the budget can't
     cover everything. Returns (enriched_fixtures, partial_coverage, note).
+
+    target_form_date: the date (a date object) to anchor the 90-day lookback
+    window for recent-form stats. Defaults to today (WAT) if not given --
+    pass the actual fetch target date explicitly when running for a
+    non-"today" date (e.g. via --date) so form data reflects matches before
+    that date, not the real current date.
     """
+    if target_form_date is None:
+        target_form_date = datetime.now(config.WAT).date()
+
     team_stats_cache = storage.load_team_stats_cache()
     standings_cache = storage.load_standings_cache()
 
@@ -282,7 +294,12 @@ def enrich_fixtures(
                     fixture["stats"][side] = cached
                     continue
                 try:
-                    raw_recent = client.get("/fixtures", params={"team": team_id, "last": 10})
+                    raw_recent = client.get("/fixtures", params={
+                        "team": team_id,
+                        "from": (target_form_date - timedelta(days=90)).isoformat(),
+                        "to": target_form_date.isoformat(),
+                        "status": "FT",
+                    })
                     parsed = _derive_team_stats_from_recent_fixtures(raw_recent, team_id)
                 except BudgetExceededError:
                     raise
@@ -395,7 +412,9 @@ def run(session: str, target_date: Optional[datetime] = None) -> None:
     if max_fixtures == 0:
         print("WARNING: no run budget remaining for enrichment; writing fixtures without stats.")
 
-    enriched, partial, note = enrich_fixtures(client, shaped, max_fixtures=max_fixtures or None)
+    enriched, partial, note = enrich_fixtures(
+        client, shaped, max_fixtures=max_fixtures or None, target_form_date=target_date.date(),
+    )
 
     scored = score_all_fixtures(enriched)
 

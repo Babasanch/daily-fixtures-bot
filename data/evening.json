@@ -1,22 +1,22 @@
 {
-  "target_date": "2026-07-21",
+  "target_date": "2026-07-22",
   "fixtures": [
     {
-      "fixture_id": 1548888,
-      "league_id": 667,
-      "league_name": "Friendlies Clubs",
+      "fixture_id": 1558455,
+      "league_id": 525,
+      "league_name": "UEFA Champions League Women",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-21T11:00:00+00:00",
-      "kickoff_wat": "2026-07-21T12:00:00+01:00",
+      "kickoff_utc": "2026-07-22T12:00:00+00:00",
+      "kickoff_wat": "2026-07-22T13:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 62,
-        "name": "Sheffield Utd"
+        "id": 16840,
+        "name": "Glentoran BU W"
       },
       "away_team": {
-        "id": 37,
-        "name": "Huddersfield"
+        "id": 26162,
+        "name": "Riga W"
       },
       "stats": {
         "home": {},
@@ -92,21 +92,21 @@
       }
     },
     {
-      "fixture_id": 1598491,
+      "fixture_id": 1567696,
       "league_id": 667,
       "league_name": "Friendlies Clubs",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-21T11:00:00+00:00",
-      "kickoff_wat": "2026-07-21T12:00:00+01:00",
+      "kickoff_utc": "2026-07-22T12:00:00+00:00",
+      "kickoff_wat": "2026-07-22T13:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 56,
-        "name": "Bristol City"
+        "id": 1304,
+        "name": "Dunkerque"
       },
       "away_team": {
-        "id": 1367,
-        "name": "Newport County"
+        "id": 3603,
+        "name": "Samsunspor"
       },
       "stats": {
         "home": {},
@@ -182,21 +182,21 @@
       }
     },
     {
-      "fixture_id": 1560760,
+      "fixture_id": 1567697,
       "league_id": 667,
       "league_name": "Friendlies Clubs",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-21T12:00:00+00:00",
-      "kickoff_wat": "2026-07-21T13:00:00+01:00",
+      "kickoff_utc": "2026-07-22T12:00:00+00:00",
+      "kickoff_wat": "2026-07-22T13:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 108,
-        "name": "Auxerre"
+        "id": 242,
+        "name": "Famalicao"
       },
       "away_team": {
-        "id": 107,
-        "name": "Chateauroux"
+        "id": 240,
+        "name": "Arouca"
       },
       "stats": {
         "home": {},
@@ -272,21 +272,21 @@
       }
     },
     {
-      "fixture_id": 1560761,
+      "fixture_id": 1567698,
       "league_id": 667,
       "league_name": "Friendlies Clubs",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-21T12:00:00+00:00",
-      "kickoff_wat": "2026-07-21T13:00:00+01:00",
+      "kickoff_utc": "2026-07-22T12:00:00+00:00",
+      "kickoff_wat": "2026-07-22T13:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 72,
-        "name": "QPR"
+        "id": 6358,
+        "name": "Lusit\u00e2nia Lourosa"
       },
       "away_team": {
-        "id": 1358,
-        "name": "Wycombe"
+        "id": 810,
+        "name": "Vizela"
       },
       "stats": {
         "home": {},
@@ -362,21 +362,21 @@
       }
     },
     {
-      "fixture_id": 1560762,
+      "fixture_id": 1583402,
       "league_id": 667,
       "league_name": "Friendlies Clubs",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-21T12:00:00+00:00",
-      "kickoff_wat": "2026-07-21T13:00:00+01:00",
+      "kickoff_utc": "2026-07-22T12:00:00+00:00",
+      "kickoff_wat": "2026-07-22T13:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 1620,
-        "name": "FC Viktoria K\u00f6ln"
+        "id": 4724,
+        "name": "Alverca"
       },
       "away_team": {
-        "id": 204,
-        "name": "VVV Venlo"
+        "id": 230,
+        "name": "Estoril"
       },
       "stats": {
         "home": {},
@@ -452,21 +452,21 @@
       }
     },
     {
-      "fixture_id": 1583396,
+      "fixture_id": 1583403,
       "league_id": 667,
       "league_name": "Friendlies Clubs",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-21T12:00:00+00:00",
-      "kickoff_wat": "2026-07-21T13:00:00+01:00",
+      "kickoff_utc": "2026-07-22T12:00:00+00:00",
+      "kickoff_wat": "2026-07-22T13:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 17403,
-        "name": "Czarni Po\u0142aniec"
+        "id": 528,
+        "name": "Avellino"
       },
       "away_team": {
-        "id": 6186,
-        "name": "Maccabi Bnei Raina"
+        "id": 24701,
+        "name": "Scafatese"
       },
       "stats": {
         "home": {},
@@ -542,21 +542,21 @@
       }
     },
     {
-      "fixture_id": 1589289,
+      "fixture_id": 1583404,
       "league_id": 667,
       "league_name": "Friendlies Clubs",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-21T12:00:00+00:00",
-      "kickoff_wat": "2026-07-21T13:00:00+01:00",
+      "kickoff_utc": "2026-07-22T12:00:00+00:00",
+      "kickoff_wat": "2026-07-22T13:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 15882,
-        "name": "Mamer"
+        "id": 99,
+        "name": "Clermont Foot"
       },
       "away_team": {
-        "id": 15866,
-        "name": "Green Boys"
+        "id": 3179,
+        "name": "Fleury 91"
       },
       "stats": {
         "home": {},
@@ -632,21 +632,21 @@
       }
     },
     {
-      "fixture_id": 1548008,
+      "fixture_id": 1584920,
       "league_id": 667,
       "league_name": "Friendlies Clubs",
       "country": "World",
       "season": 2026,
-      "kickoff_utc": "2026-07-21T13:00:00+00:00",
-      "kickoff_wat": "2026-07-21T14:00:00+01:00",
+      "kickoff_utc": "2026-07-22T12:00:00+00:00",
+      "kickoff_wat": "2026-07-22T13:00:00+01:00",
       "session": "evening",
       "home_team": {
-        "id": 7192,
-        "name": "Chelsea U21"
+        "id": 3485,
+        "name": "Garbarnia Krak\u00f3w"
       },
       "away_team": {
-        "id": 20016,
-        "name": "Cardiff City U21"
+        "id": 26184,
+        "name": "Naprz\u00f3d"
       },
       "stats": {
         "home": {},
@@ -723,7 +723,7 @@
     }
   ],
   "partial_coverage": true,
-  "coverage_note": "101 fixtures matched the whitelist and session window, but only the 14 earliest kickoffs were processed to stay within the daily API request budget. API request budget ran out mid-session; 6 fixture(s) were left without full stats and are excluded from this session's output.",
+  "coverage_note": "115 fixtures matched the whitelist and session window, but only the 14 earliest kickoffs were processed to stay within the daily API request budget. API request budget ran out mid-session; 6 fixture(s) were left without full stats and are excluded from this session's output.",
   "session": "evening",
-  "generated_at_wat": "2026-07-21T11:30:24.724593+01:00"
+  "generated_at_wat": "2026-07-22T11:30:21.892884+01:00"
 }
